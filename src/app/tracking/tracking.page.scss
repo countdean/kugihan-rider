@@ -1,0 +1,22 @@
+ion-col p, h5{
+    margin:0;
+    text-align: center;
+}
+ion-col h5{
+    font-size: 16px;
+    color: #333;
+}
+
+ion-card{
+    position: absolute;
+    z-index: 999999;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+}
+
+.footer-md:before{
+    background-image: none !important;
+}

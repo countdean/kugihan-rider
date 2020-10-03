@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ "APP_NAME" | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="locationinput-holder">
+    <input class="locationinput" (click)="chooseOrigin()" placeholder="Where do you want to pickup?" type="text"
+      value="{{origin ? origin.vicinity : '' }}">
+    <input class="locationinput" (click)="chooseDestination()" placeholder="Where do you want to drop?" type="text"
+      value="{{ destination ? destination.vicinity : '' }}">
+    <p class="distanceText" [hidden]="!destination">
+      <span *ngIf="distanceText!=''">{{ distanceText }}</span>
+      <span *ngIf="durationText!=''">&nbsp; {{durationText}}</span>
+    </p>
+  </div>
+
+  <div id="{{ mapId }}" [ngStyle]="{height: '100%'}"></div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar style="padding: 8px;">
+    <ion-row [hidden]="!destination" style="background: #f5f5f5;">
+      <ion-col>
+        <ion-button fill="clear" size="small" color="dark" expand="block" (click)="choosePaymentMethod1()">
+          <ion-icon slot="start" name="{{ getPaymentMethod() }}"></ion-icon>
+          {{ getPaymentMethod() }}
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="clear" size="small" color="dark" expand="block" (click)="showPromoPopup()">
+          <ion-icon slot="start" name="create"></ion-icon>
+          {{'PROMO' | translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row [hidden]="!destination">
+
+      <ion-col *ngFor="let vehicle of vehicles; let i = index" [ngClass]="{'active': vehicle.active}"
+        (click)="chooseVehicle(i)">
+        <p class="carName">{{ vehicle.name }}</p>
+        <img src="{{ vehicle.icon }}">
+        <!-- <p class="carSeats">{{ vehicle.seats }} seats</p> -->
+        <p class="carPrice">{{currency }}{{ vehicle.fee_taxed }}</p>
+      </ion-col>
+
+    </ion-row>
+
+
+    <ion-button expand="block" color="dark" [hidden]="destination" (click)="chooseDestination()">
+      {{'RIDE_NOW' | translate}}</ion-button>
+    <ion-button expand="block" color="dark" [hidden]="!destination" (click)="book()">
+      {{ locateDriver == false ? 'RIDE NOW':'Locating Drivers'}} <ion-spinner name="dots" color="light"
+        [hidden]="!locateDriver"></ion-spinner>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

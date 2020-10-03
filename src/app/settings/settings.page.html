@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'SETTINGS' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{user.photoURL}}" onerror="this.src='./assets/img/default.png'" />
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight: 500;">{{user.name}}</h3>
+        <p>{{user.phoneNumber}}</p>
+      </ion-label>
+      <ion-button slot="end" color="dark" fill="outline" routerLink="/profile">{{'EDIT' | translate}}</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="globe"></ion-icon>
+      <ion-label>
+        <h3>{{'LANGUAGE' | translate}}</h3>
+        <p>{{'CHANGE_LANGUAGE' | translate}}</p>
+      </ion-label>
+      <ion-select (ionChange)="changeLang()" [(ngModel)]="lang" slot="end">
+        <ion-select-option *ngFor="let lang of langArr" value="{{lang.code}}">{{lang.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="notifications"></ion-icon>
+      <ion-label>
+        <h3>{{'PUSH_NOTIFICATION' | translate}}</h3>
+        <p>{{'PUSH_NOTIFICATION_TEXT' | translate}}</p>
+      </ion-label>
+      <ion-toggle slot="end" (click)="change()" [(ngModel)]="user.isPushEnabled"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

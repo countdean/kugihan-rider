@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'PAYMENTS' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines="none">
+          <ion-label position="stacked">{{'CARD_NUMBER' | translate}}</ion-label>
+          <ion-input type="text" [(ngModel)]="number" size="20"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8">
+        <ion-item lines="none">
+          <ion-label position="stacked">{{'EXPIRE_DATE' | translate}} (MM/YY)</ion-label>
+          <ion-input type="text" [(ngModel)]="exp" size="5"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="4">
+        <ion-item lines="none">
+          <ion-label position="stacked">{{'CVV' | translate}}</ion-label>
+          <ion-input type="password" [(ngModel)]="cvv" size="4"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="ion-padding">
+    <ion-button expand="block" color="dark" (click)="saveCard()">{{'SAVE' | translate}}</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,93 @@
+ion-title{
+  text-align: center;
+  margin-left: -40px !important;
+  letter-spacing: 4px;
+}
+.header-md:after{
+  background: none;
+}
+.locationinput-holder{
+  padding: 0.2rem 1rem;
+  background: #1b1b2f;
+  top:0;
+  width:100%;
+}
+.locationinput{
+  background: #fff;
+  outline:0;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 2px 0px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  color: #555;
+}
+
+.distanceText{
+  font-size: 12px;
+  color: #eeeeee;
+  margin: 0;
+}
+.align-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+}
+
+.align-bottom p{
+  font-size: 14p
+}
+
+ion-col{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+ion-col img{
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  border-radius: 100%;
+}
+ion-col p { margin: 2px }
+ion-row{
+  background: #fff;
+}
+.list-md {
+  margin: -1px 0 0px;
+}
+.label-md{
+  margin: 13px -50px 13px 0;
+}
+.text-input-md{
+  font-size: 14px;
+  margin: 8px 5px;
+}
+#map {
+  width: 100%;
+}
+
+.active img{
+  border: 3px solid #ffce00;
+}
+
+.carName{
+  font-size: 12px;
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.carSeats{
+  color: #777;
+  font-size: 0.7em;
+}
+.carPrice{
+  color: #777;
+  font-size: 0.8em;
+}

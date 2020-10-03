@@ -1,0 +1,28 @@
+#map {
+    height: 100%;
+  }
+
+  .marker {
+    position: fixed;
+    z-index: 1000;
+    top:45%;
+    left: 45%;;
+  }
+
+  .locationinput{
+    background: #eee;
+    border:0;
+    outline:0;
+    width: 100%;
+    padding: 0.5rem;
+    color: #333;
+    margin: 4px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+.place-text{
+  margin: 4px 0px;
+  font-size: 12px;
+  text-align: center;
+  color: #777;
+}

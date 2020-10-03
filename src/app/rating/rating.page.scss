@@ -1,0 +1,20 @@
+.pricing{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+table{
+    width: 70%;
+}
+
+tr{
+    border: 1px solid #eee;
+}
+
+td{
+    padding: 4px;
+}
+
+.header-md:after { background-image: none !important }

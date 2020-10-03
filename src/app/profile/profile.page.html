@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'BASIC_PROFILE' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="user != null && user != undefined">
+    <div style="text-align:center">
+      <img src="{{ user.photoURL }}" onerror="this.src='./assets/img/default.png'"
+        style="width:80px;height:80px;border-radius:100px" (click)="chooseFile()">
+      <form ngNoForm>
+        <input id="avatar" name="file" type="file" (change)="upload()">
+      </form>
+    </div>
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label position="stacked" color="primary">{{'FULLNAME' | translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="user.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" color="primary">{{'PHONE_NUMBER' | translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="user.phoneNumber" [disabled]="user.isPhoneVerified"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" color="primary">{{'EMAIL_ADDRESS' | translate}}</ion-label>
+        <ion-input type="text" [(ngModel)]="user.email" disabled></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding">
+      <ion-button color="dark" expand="block" (click)="save()">{{'SAVE' | translate}}</ion-button>
+      &nbsp;
+      &nbsp;
+      <ion-button (click)="logout()" expand="block" fill="clear" color="dark">{{'LOGOUT' | translate}}</ion-button>
+    </div>
+  </div>
+</ion-content>

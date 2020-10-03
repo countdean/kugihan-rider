@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <h3>{{trip.createdAt | date: 'MMM dd, yyyy hh:mm a'}}</h3>
+      <p>#{{trip.createdAt}}</p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none" *ngIf="trip.createdAt != null">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{driver.photoURL}}" />
+      </ion-avatar>
+      <ion-label>
+        <p *ngIf="trip.rating">{{ 'RATED' | translate }} {{trip.rating}}</p>
+        <h3>{{driver.name}}</h3>
+      </ion-label>
+      <ion-badge slot="end" color="dark">{{trip.status}}</ion-badge>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-icon style="margin-right:18px" name="pin" color="success" slot="start"></ion-icon>
+      <ion-label>
+        <p>{{ trip.pickedUpAt | date: 'shortTime'}}</p>
+        <ion-text>
+          <h3>{{trip.origin.vicinity}}</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item text-wrap>
+      <ion-icon style="margin-right:18px" name="pin" color="danger" slot="start"></ion-icon>
+      <ion-label>
+        <p>{{ trip.droppedOffAt | date: 'shortTime'}}</p>
+        <ion-text>
+          <h3>{{trip.destination.vicinity}}</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item-divider>
+      <h5>{{ 'BILLING_DETAILS' | translate }}</h5>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>{{ 'FEE' | translate }}</ion-label>
+      <ion-text slot="end">{{ trip.currency }} {{trip.rawfee}}</ion-text>
+    </ion-item>
+    <ion-item *ngIf="trip.discount">
+      <ion-label>
+        {{ 'DISCOUNT' | translate }}
+        <p>{{trip.promocode}} • {{trip.discount}} %</p>
+      </ion-label>
+      <ion-text slot="end">{{ trip.currency }} {{ discount }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{ 'TAX' | translate }}
+        <p> {{ trip.tax }} %</p>
+      </ion-label>
+      <ion-text slot="end">
+        {{ trip.currency }} {{ tax }}
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{ 'FINAL' | translate }}
+        <p>{{trip.paymentMethod}}</p>
+      </ion-label>
+      <ion-text slot="end">
+        {{ trip.currency }} {{trip.fee_taxed}}
+      </ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

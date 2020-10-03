@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'HISTORY' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p *ngIf="trips.length == 0" style="margin-top: 5px; text-align: center">{{'NO_TRIPS_FOUND' | translate}}</p>
+  <ion-list lines="none">
+    <ion-item *ngFor="let trip of trips" (click)="viewTrip(trip)">
+      <ion-icon name="car" slot="start" style="margin-right: 20px;"></ion-icon>
+      <ion-label>
+        <h3>{{ trip.createdAt | date:'MMM dd, yyyy hh:mm a'}}</h3>
+        <p>{{ trip.createdAt }}</p>
+        <p>{{ trip.origin.vicinity }}</p>
+        <p>{{ trip.destination.vicinity }}</p>
+      </ion-label>
+      <ion-text slot="end" style="margin: 0;">
+        <p class="currency">{{trip.currency}} {{trip.fee}}</p>
+      </ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>

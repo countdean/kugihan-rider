@@ -1,0 +1,82 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+.login-header{
+    text-align: center;
+    padding-top: 24px;
+}
+.login-header img{
+    height: 80px;
+    width: auto;
+}
+ion-button{
+    --box-shadow:none;
+}
+
+ion-input, ion-textarea{
+    margin-top: 1rem !important;
+    border: 2px solid #ddd !important;
+    border-radius: 4px;
+}
+
+ion-item {
+    --highlight-color-valid: transparent;
+    --highlight-color-invalid: transparent;
+    --highlight-color-focused: transparent;
+  }
+
+.native-input.sc-ion-input-md{
+    padding: 0.5rem !important;
+    color: #555;   
+}
+
+ion-menu {
+    --width: 240px;
+    --ion-background-color: var(--ion-color-dark);
+    --ion-text-color: var(--ion-color-dark-contrast);
+
+    ion-toolbar {
+        --background: var(--ion-color-dark);
+    }
+    ion-icon{
+        color:var(--ion-color-dark-contrast);
+    }
+
+    ion-list {/* optional, but it needs when you use gradient as a background color.*/
+        background: transparent;
+    }
+}
+
+.sidemenu-header{
+    background: #333;
+    height: 200px;
+    padding-top:60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
