@@ -112,4 +112,24 @@ export class AuthService {
     return this.db.object('passengers/' + user.uid + '/card');
   }
 
+  loginFbRegister(authData) {
+    console.log(authData);
+    const user = this.afAuth.auth.currentUser;
+    const existing = this.db.object('drivers/' + user.uid);
+    //console.log("Firebase: " + JSON.stringify(existing));
+    if (!('uid' in existing)) {
+      console.log('UID IS NOT EXISTING');
+      let userInfo: any = {
+        uid: authData.user.uid,
+        name: authData.user.displayName,
+        //phoneNumber: phoneNumber,
+        isPhoneVerified: false,
+        email: authData.user.email,
+        createdAt: Date.now()
+      };
+      this.updateUserProfile(userInfo);
+    }
+    return;
+  }
+
 }

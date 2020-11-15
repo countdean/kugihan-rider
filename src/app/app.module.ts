@@ -21,6 +21,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { RatingPageModule } from './rating/rating.module';
+import { Facebook } from '@ionic-native/facebook/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/lang/', '.json');
@@ -51,6 +53,8 @@ export function createTranslateLoader(http: HttpClient) {
     }),
   ],
   providers: [
+    Facebook,
+    GooglePlus,
     StatusBar,
     SplashScreen,
     Geolocation,

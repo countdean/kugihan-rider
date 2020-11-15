@@ -71,44 +71,52 @@ export class AppComponent {
       this.translate.setDefaultLang('en');
 
       let lang = localStorage.getItem('lang')
-      console.log(lang);
+      //console.log(lang);
       if (lang == null || lang == undefined)
         this.translate.use('en');
       else
         this.translate.use(lang);
 
-      if (localStorage.getItem('isLoggedIn') === 'true') {
+      //if (localStorage.getItem('isLoggedIn') === 'true') {
 
-        this.router.navigateByUrl('/home', { skipLocationChange: true, replaceUrl: true });
+      this.router.navigateByUrl('/home', { skipLocationChange: true, replaceUrl: true });
 
-        this.afAuth.authState.pipe(take(1)).subscribe(authData => {
-          if (authData) {
+      this.afAuth.authState.pipe(take(1)).subscribe(authData => {
+        if (authData) {
+          console.log('auth: ' + authData);
+          this.authService.getUser(authData.uid).valueChanges().subscribe(user => {
+            console.log(user);
+            this.user = user
+          });
 
-            this.authService.getUser(authData.uid).valueChanges().subscribe(user => {
-              console.log(user);
-              this.user = user
-            });
-
-            this.tripService.getTrips().valueChanges().subscribe((trips: any) => {
-              trips.forEach(trip => {
-                if (trip.status === 'waiting' || trip.status === 'accepted' || trip.status === 'going') {
-                  this.tripService.setId(trip.key)
-                  this.router.navigateByUrl('/tracking');
-                }
-                else if (trip.status === 'finished') {
-                  this.router.navigateByUrl('/home', { skipLocationChange: true, replaceUrl: true });
-                }
-              })
+          this.tripService.getTrips().valueChanges().subscribe((trips: any) => {
+            trips.forEach(trip => {
+              if (trip.status === 'waiting' || trip.status === 'accepted' || trip.status === 'going') {
+                this.tripService.setId(trip.key)
+                this.router.navigateByUrl('/tracking');
+              }
+              else if (trip.status === 'finished') {
+                this.router.navigateByUrl('/home', { skipLocationChange: true, replaceUrl: true });
+              }
             })
-            this.router.navigateByUrl('/home', { skipLocationChange: true, replaceUrl: true });
-          } else {
-            this.router.navigateByUrl('/login', { skipLocationChange: true, replaceUrl: true });
-          }
-        });
-      }
-      else {
-        this.router.navigateByUrl('/login', { skipLocationChange: true, replaceUrl: true });
-      }
+          })
+          this.router.navigateByUrl('/home', { skipLocationChange: true, replaceUrl: true });
+        } else {
+          this.router.navigateByUrl('/login', { skipLocationChange: true, replaceUrl: true });
+        }
+      });
+      //}
+      // else {
+      //   this.router.navigateByUrl('/login', { skipLocationChange: true, replaceUrl: true });
+      // }
     });
   }
+
+  // logout() {
+  //   //console.log('logout triggered');
+  //   this.afAuth.auth.signOut();
+  //   //console.log(this.afAuth.user);
+  //   localStorage.setItem('isLoggedIn', 'false');
+  //   this.router.navigateByUrl('/login', { skipLocationChange: true, replaceUrl: true });
+  // }
 }

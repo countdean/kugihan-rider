@@ -134,11 +134,30 @@ export class TrackingPage implements OnInit {
     let origin = new google.maps.LatLng(this.trip.origin.location.lat, this.trip.origin.location.lng);
     let dest = new google.maps.LatLng(this.trip.destination.location.lat, this.trip.destination.location.lng);
 
-    var request = {
-      origin: origin,
-      destination: dest,
-      travelMode: google.maps.TravelMode.DRIVING
-    };
+    if (this.trip.dropOff.length > 0) {
+
+      let finalWaypoints = [];
+      this.trip.dropOff.forEach(function(item) {
+        finalWaypoints.push({location: item.location});
+      });
+      console.log(`THE DROP OFF ${JSON.stringify(finalWaypoints)}`)
+
+      var request: any = {
+        origin: origin,
+        destination: dest,
+        waypoints: finalWaypoints,
+        travelMode: google.maps.TravelMode.DRIVING
+      };
+
+    } else {
+
+      var request: any = {
+        origin: origin,
+        destination: dest,
+        travelMode: google.maps.TravelMode.DRIVING
+      };
+
+    }
 
     directionsService.route(request, function (response, status) {
       if (status == google.maps.DirectionsStatus.OK) {

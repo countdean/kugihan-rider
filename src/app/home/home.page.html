@@ -12,8 +12,29 @@
   <div class="locationinput-holder">
     <input class="locationinput" (click)="chooseOrigin()" placeholder="Where do you want to pickup?" type="text"
       value="{{origin ? origin.vicinity : '' }}">
+    
+
+    <ion-row style="background: transparent" *ngFor="let att of dropOff; let i = index">
+      <ion-col size="10">
+        <input class="locationinput" (click)="chooseDropOff(i + 1)" placeholder="Choose another location" type="text"
+        value="{{ dropOff[i] ? dropOff[i].vicinity : '' }}">
+      </ion-col>
+      <ion-col size="2" justify-content-end>
+        <ion-button size="small" color="danger" (click)="removeDropOff(i + 1)">
+          <ion-icon  name="close"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row justify-content-end style="background: transparent" [hidden]="dropOff.length > 2">  
+      <ion-button size="small" (click)="chooseDropOff(dropOff.length)"> 
+        Add Stop
+      </ion-button>
+    </ion-row>
+
     <input class="locationinput" (click)="chooseDestination()" placeholder="Where do you want to drop?" type="text"
       value="{{ destination ? destination.vicinity : '' }}">
+
     <p class="distanceText" [hidden]="!destination">
       <span *ngIf="distanceText!=''">{{ distanceText }}</span>
       <span *ngIf="durationText!=''">&nbsp; {{durationText}}</span>

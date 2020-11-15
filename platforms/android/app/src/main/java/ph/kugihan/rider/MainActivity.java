@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.codesundar.iontaxirider;
+package ph.kugihan.rider;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

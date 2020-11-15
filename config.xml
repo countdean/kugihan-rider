@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.codesundar.iontaxirider" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="ph.kugihan.rider" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Kugihan Express Rider</name>
     <description>Kugihan Express</description>
     <author email="kugihanservices@gmail.com" href="https://kugihan.com/">Kugihan.com</author>

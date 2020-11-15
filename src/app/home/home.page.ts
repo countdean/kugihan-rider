@@ -36,6 +36,7 @@ export class HomePage implements OnInit {
   map: any;
   origin: any;
   destination: any;
+  dropOff: Array<any> = [];
   distance: number = 0;
   duration: number = 0;
   currency: string;
@@ -51,6 +52,7 @@ export class HomePage implements OnInit {
   discount: any = 0;
   startLatLng: any;
   destLatLng: any;
+  dropLatLng: any;
   directionsService: any;
   directionsDisplay: any;
   bounds: any;
@@ -84,14 +86,17 @@ export class HomePage implements OnInit {
         this.user = this.authService.getUserData();
       }
     });
-    console.log("calling");
+    //console.log("calling");
     this.origin = this.tripService.getOrigin();
     this.destination = this.tripService.getDestination();
+    this.dropOff = [];
+    this.dropOff = this.tripService.getDropoff();
+    //console.log('THE DROP' + JSON.stringify(this.dropOff));
     this.loadMap();
   }
 
   ngOnInit() {
-    console.log("calling");
+    //console.log("calling");
   }
 
   ionViewWillLeave() {
@@ -172,18 +177,21 @@ export class HomePage implements OnInit {
     // get current location
     return this.geolocation.getCurrentPosition().then((resp) => {
 
-      if (this.origin) this.startLatLng = new google.maps.LatLng(this.origin.location.lat, this.origin.location.lng);
-      else this.startLatLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      if (this.origin) {
+        this.startLatLng = new google.maps.LatLng(this.origin.location.lat, this.origin.location.lng);
+      } else {
+        this.startLatLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude); 
+      }
 
       let directionsDisplay;
       let directionsService = new google.maps.DirectionsService();
       directionsDisplay = new google.maps.DirectionsRenderer({
         polylineOptions: {
-          strokeColor: "black"
+          strokeColor: 'black'
         }
       });
 
-      var mapOptions: any = environment.mapOptions;
+      let mapOptions: any = environment.mapOptions;
       mapOptions.center = this.startLatLng;
       mapOptions.mapTypeId = google.maps.MapTypeId.ROADMAP;
 
@@ -233,10 +241,34 @@ export class HomePage implements OnInit {
 
                 if (status == google.maps.DirectionsStatus.OK && result.routes.length != 0) {
                   console.log(result);
-                  this.distance = result.routes[0].legs[0].distance.value / 1000;
-                  this.distanceText = result.routes[0].legs[0].distance.text;
-                  this.durationText = result.routes[0].legs[0].duration.text;
-                  console.log(this.distance);
+                  // this.distance = result.routes[0].legs[0].distance.value / 1000;
+                  // this.distanceText = result.routes[0].legs[0].distance.text;
+                  // this.durationText = result.routes[0].legs[0].duration.text;
+                  //console.log(this.distance);
+
+                  var totalDist = 0;
+                  var totalTime = 0;
+                  var myroute = result.routes[0];
+
+                  for (var i = 0; i < myroute.legs.length; i++) {
+                    totalDist += myroute.legs[i].distance.value;
+                    totalTime += myroute.legs[i].duration.value;
+                  }
+
+                  this.distance = totalDist / 1000;
+                  totalDist = totalDist / 1000;
+                  this.distanceText = totalDist.toFixed(1) + ' km';
+                  totalTime = totalTime / 60;
+                  if((totalTime / 60) > 1) {
+                    var totalhour = Math.trunc(totalTime / 60);
+                    var totalMins = Math.trunc(totalTime % 60);
+                    var hourText = totalhour > 1 ? totalhour + ' hours' : totalhour + ' hour';
+                    var minsText = totalMins > 1 ? totalMins + ' mins' : totalMins + ' min';
+                    this.durationText = hourText + ' ' + minsText;
+                  } else {
+                    var totalMins = Math.trunc(totalTime % 60);
+                    this.durationText = totalTime > 1 ? totalMins + ' mins' : totalMins + ' min';
+                  }
 
                   for (let i = 0; i < this.vehicles.length; i++) {
 
@@ -263,6 +295,8 @@ export class HomePage implements OnInit {
                     }
                   }
 
+                  console.log('TOTAL DISTANCE' + this.distanceText);
+                  console.log('TOTAL DURATION' + this.durationText);
                 } else {
                   console.log("error");
                 }
@@ -289,11 +323,30 @@ export class HomePage implements OnInit {
         bounds.extend(this.destLatLng);
 
         mapx.fitBounds(bounds);
-        var request = {
-          origin: this.startLatLng,
-          destination: this.destLatLng,
-          travelMode: google.maps.TravelMode.DRIVING
-        };
+        
+        if (this.dropOff.length > 0) {
+
+          let finalWaypoints = [];
+          this.dropOff.forEach(function(item) {
+            finalWaypoints.push({location: item.location});
+          });
+          console.log(`THE DROP OFF ${JSON.stringify(finalWaypoints)}`)
+
+          var request: any = {
+            origin: this.startLatLng,
+            destination: this.destLatLng,
+            waypoints: finalWaypoints,
+            travelMode: google.maps.TravelMode.DRIVING
+          };
+        } else {
+          // tslint:disable-next-line: prefer-const
+          var request: any = {
+            origin: this.startLatLng,
+            destination: this.destLatLng,
+            travelMode: google.maps.TravelMode.DRIVING
+          };
+        }
+        
         directionsService.route(request, function (response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
             console.log(response);
@@ -440,6 +493,7 @@ export class HomePage implements OnInit {
             driver.key,
             this.tripService.getOrigin(),
             this.tripService.getDestination(),
+            this.tripService.getDropoff(),
             this.tripService.getDistance(),
             this.tripService.getFee(),
             this.tripService.getCurrency(),
@@ -511,6 +565,21 @@ export class HomePage implements OnInit {
         type: 'destination'
       }
     });
+  }
+
+  // choose dropoff place
+  chooseDropOff(dropOffIndex) {
+    this.router.navigate(['map'], {
+      queryParams: {
+        type: 'dropoff',
+        dropOffIndex: dropOffIndex
+      }
+    });
+  }
+
+  removeDropOff(dropOffIndex) {
+    this.dropOff = this.tripService.removeDropOff(dropOffIndex);
+    this.loadMap();
   }
 
   choosePaymentMethod() {
@@ -599,5 +668,4 @@ export class HomePage implements OnInit {
       vehicle.setMap(null);
     });
   }
-
 }

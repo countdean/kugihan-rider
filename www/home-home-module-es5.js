@@ -28180,7 +28180,7 @@ module.exports = firebase;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"dark\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>\n      {{ \"APP_NAME\" | translate}}\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <div class=\"locationinput-holder\">\n    <input class=\"locationinput\" (click)=\"chooseOrigin()\" placeholder=\"Where do you want to pickup?\" type=\"text\"\n      value=\"{{origin ? origin.vicinity : '' }}\">\n    <input class=\"locationinput\" (click)=\"chooseDestination()\" placeholder=\"Where do you want to drop?\" type=\"text\"\n      value=\"{{ destination ? destination.vicinity : '' }}\">\n    <p class=\"distanceText\" [hidden]=\"!destination\">\n      <span *ngIf=\"distanceText!=''\">{{ distanceText }}</span>\n      <span *ngIf=\"durationText!=''\">&nbsp; {{durationText}}</span>\n    </p>\n  </div>\n\n  <div id=\"{{ mapId }}\" [ngStyle]=\"{height: '100%'}\"></div>\n</ion-content>\n<ion-footer>\n  <ion-toolbar style=\"padding: 8px;\">\n    <ion-row [hidden]=\"!destination\" style=\"background: #f5f5f5;\">\n      <ion-col>\n        <ion-button fill=\"clear\" size=\"small\" color=\"dark\" expand=\"block\" (click)=\"choosePaymentMethod1()\">\n          <ion-icon slot=\"start\" name=\"{{ getPaymentMethod() }}\"></ion-icon>\n          {{ getPaymentMethod() }}\n        </ion-button>\n      </ion-col>\n      <ion-col>\n        <ion-button fill=\"clear\" size=\"small\" color=\"dark\" expand=\"block\" (click)=\"showPromoPopup()\">\n          <ion-icon slot=\"start\" name=\"create\"></ion-icon>\n          {{'PROMO' | translate}}\n        </ion-button>\n      </ion-col>\n    </ion-row>\n\n    <ion-row [hidden]=\"!destination\">\n\n      <ion-col *ngFor=\"let vehicle of vehicles; let i = index\" [ngClass]=\"{'active': vehicle.active}\"\n        (click)=\"chooseVehicle(i)\">\n        <p class=\"carName\">{{ vehicle.name }}</p>\n        <img src=\"{{ vehicle.icon }}\">\n        <!-- <p class=\"carSeats\">{{ vehicle.seats }} seats</p> -->\n        <p class=\"carPrice\">{{currency }}{{ vehicle.fee_taxed }}</p>\n      </ion-col>\n\n    </ion-row>\n\n\n    <ion-button expand=\"block\" color=\"dark\" [hidden]=\"destination\" (click)=\"chooseDestination()\">\n      {{'RIDE_NOW' | translate}}</ion-button>\n    <ion-button expand=\"block\" color=\"dark\" [hidden]=\"!destination\" (click)=\"book()\">\n      {{ locateDriver == false ? 'RIDE NOW':'Locating Drivers'}} <ion-spinner name=\"dots\" color=\"light\"\n        [hidden]=\"!locateDriver\"></ion-spinner>\n    </ion-button>\n  </ion-toolbar>\n</ion-footer>"
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>\r\n      {{ \"APP_NAME\" | translate}}\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n  <div class=\"locationinput-holder\">\r\n    <input class=\"locationinput\" (click)=\"chooseOrigin()\" placeholder=\"Where do you want to pickup?\" type=\"text\"\r\n      value=\"{{origin ? origin.vicinity : '' }}\">\r\n    \r\n\r\n    <ion-row style=\"background: transparent\" *ngFor=\"let att of dropOff; let i = index\">\r\n      <ion-col size=\"10\">\r\n        <input class=\"locationinput\" (click)=\"chooseDropOff(i + 1)\" placeholder=\"Choose another location\" type=\"text\"\r\n        value=\"{{ dropOff[i] ? dropOff[i].vicinity : '' }}\">\r\n      </ion-col>\r\n      <ion-col size=\"2\" justify-content-end>\r\n        <ion-button size=\"small\" color=\"danger\" (click)=\"removeDropOff(i + 1)\">\r\n          <ion-icon  name=\"close\"></ion-icon>\r\n        </ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row justify-content-end style=\"background: transparent\" [hidden]=\"dropOff.length > 2\">  \r\n      <ion-button size=\"small\" (click)=\"chooseDropOff(dropOff.length)\"> \r\n        Add Stop\r\n      </ion-button>\r\n    </ion-row>\r\n\r\n    <input class=\"locationinput\" (click)=\"chooseDestination()\" placeholder=\"Where do you want to drop?\" type=\"text\"\r\n      value=\"{{ destination ? destination.vicinity : '' }}\">\r\n\r\n    <p class=\"distanceText\" [hidden]=\"!destination\">\r\n      <span *ngIf=\"distanceText!=''\">{{ distanceText }}</span>\r\n      <span *ngIf=\"durationText!=''\">&nbsp; {{durationText}}</span>\r\n    </p>\r\n  </div>\r\n\r\n  <div id=\"{{ mapId }}\" [ngStyle]=\"{height: '100%'}\"></div>\r\n</ion-content>\r\n<ion-footer>\r\n  <ion-toolbar style=\"padding: 8px;\">\r\n    <ion-row [hidden]=\"!destination\" style=\"background: #f5f5f5;\">\r\n      <ion-col>\r\n        <ion-button fill=\"clear\" size=\"small\" color=\"dark\" expand=\"block\" (click)=\"choosePaymentMethod1()\">\r\n          <ion-icon slot=\"start\" name=\"{{ getPaymentMethod() }}\"></ion-icon>\r\n          {{ getPaymentMethod() }}\r\n        </ion-button>\r\n      </ion-col>\r\n      <ion-col>\r\n        <ion-button fill=\"clear\" size=\"small\" color=\"dark\" expand=\"block\" (click)=\"showPromoPopup()\">\r\n          <ion-icon slot=\"start\" name=\"create\"></ion-icon>\r\n          {{'PROMO' | translate}}\r\n        </ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row [hidden]=\"!destination\">\r\n\r\n      <ion-col *ngFor=\"let vehicle of vehicles; let i = index\" [ngClass]=\"{'active': vehicle.active}\"\r\n        (click)=\"chooseVehicle(i)\">\r\n        <p class=\"carName\">{{ vehicle.name }}</p>\r\n        <img src=\"{{ vehicle.icon }}\">\r\n        <!-- <p class=\"carSeats\">{{ vehicle.seats }} seats</p> -->\r\n        <p class=\"carPrice\">{{currency }}{{ vehicle.fee_taxed }}</p>\r\n      </ion-col>\r\n\r\n    </ion-row>\r\n\r\n\r\n    <ion-button expand=\"block\" color=\"dark\" [hidden]=\"destination\" (click)=\"chooseDestination()\">\r\n      {{'RIDE_NOW' | translate}}</ion-button>\r\n    <ion-button expand=\"block\" color=\"dark\" [hidden]=\"!destination\" (click)=\"book()\">\r\n      {{ locateDriver == false ? 'RIDE NOW':'Locating Drivers'}} <ion-spinner name=\"dots\" color=\"light\"\r\n        [hidden]=\"!locateDriver\"></ion-spinner>\r\n    </ion-button>\r\n  </ion-toolbar>\r\n</ion-footer>"
 
 /***/ }),
 
@@ -28244,7 +28244,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-title {\n  text-align: center;\n  margin-left: -40px !important;\n  letter-spacing: 4px;\n}\n\n.header-md:after {\n  background: none;\n}\n\n.locationinput-holder {\n  padding: 0.2rem 1rem;\n  background: #1b1b2f;\n  top: 0;\n  width: 100%;\n}\n\n.locationinput {\n  background: #fff;\n  outline: 0;\n  width: 100%;\n  padding: 0.5rem;\n  margin: 2px 0px;\n  font-size: 14px;\n  border-radius: 4px;\n  border: none;\n  color: #555;\n}\n\n.distanceText {\n  font-size: 12px;\n  color: #eeeeee;\n  margin: 0;\n}\n\n.align-bottom {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  padding: 5px;\n}\n\n.align-bottom p {\n  font-size: 14p;\n}\n\nion-col {\n  text-align: center;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n\nion-col img {\n  width: 40px;\n  height: 40px;\n  padding: 4px;\n  border-radius: 100%;\n}\n\nion-col p {\n  margin: 2px;\n}\n\nion-row {\n  background: #fff;\n}\n\n.list-md {\n  margin: -1px 0 0px;\n}\n\n.label-md {\n  margin: 13px -50px 13px 0;\n}\n\n.text-input-md {\n  font-size: 14px;\n  margin: 8px 5px;\n}\n\n#map {\n  width: 100%;\n}\n\n.active img {\n  border: 3px solid #ffce00;\n}\n\n.carName {\n  font-size: 12px;\n  display: inline-block;\n  background: #333;\n  color: #fff;\n  padding: 2px 4px;\n  border-radius: 4px;\n}\n\n.carSeats {\n  color: #777;\n  font-size: 0.7em;\n}\n\n.carPrice {\n  color: #777;\n  font-size: 0.8em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9EOlxcS1VHSUhBTiBFWFBSRVNTXFxTWVNURU0gMjAyMFxcS3VnaWhhbiBFeHByZXNzXFxLdWdpaGFuIEV4cHJlc3NcXGt1Z2loYW4tZXhwcmVzc1xccmlkZXIvc3JjXFxhcHBcXGhvbWVcXGhvbWUucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7RUFDQSw2QkFBQTtFQUNBLG1CQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxnQkFBQTtBQ0VGOztBREFBO0VBQ0Usb0JBQUE7RUFDQSxtQkFBQTtFQUNBLE1BQUE7RUFDQSxXQUFBO0FDR0Y7O0FEREE7RUFDRSxnQkFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtBQ0lGOztBRERBO0VBQ0UsZUFBQTtFQUNBLGNBQUE7RUFDQSxTQUFBO0FDSUY7O0FERkE7RUFDRSxlQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0FDS0Y7O0FERkE7RUFDRSxjQUFBO0FDS0Y7O0FERkE7RUFDRSxrQkFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDRCQUFBO0VBQUEsNkJBQUE7VUFBQSxzQkFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0FDS0Y7O0FESEE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxtQkFBQTtBQ01GOztBREpBO0VBQVksV0FBQTtBQ1FaOztBRFBBO0VBQ0UsZ0JBQUE7QUNVRjs7QURSQTtFQUNFLGtCQUFBO0FDV0Y7O0FEVEE7RUFDRSx5QkFBQTtBQ1lGOztBRFZBO0VBQ0UsZUFBQTtFQUNBLGVBQUE7QUNhRjs7QURYQTtFQUNFLFdBQUE7QUNjRjs7QURYQTtFQUNFLHlCQUFBO0FDY0Y7O0FEWEE7RUFDRSxlQUFBO0VBQ0EscUJBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0FDY0Y7O0FEWkE7RUFDRSxXQUFBO0VBQ0EsZ0JBQUE7QUNlRjs7QURiQTtFQUNFLFdBQUE7RUFDQSxnQkFBQTtBQ2dCRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGl0bGV7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLWxlZnQ6IC00MHB4ICFpbXBvcnRhbnQ7XG4gIGxldHRlci1zcGFjaW5nOiA0cHg7XG59XG4uaGVhZGVyLW1kOmFmdGVye1xuICBiYWNrZ3JvdW5kOiBub25lO1xufVxuLmxvY2F0aW9uaW5wdXQtaG9sZGVye1xuICBwYWRkaW5nOiAwLjJyZW0gMXJlbTtcbiAgYmFja2dyb3VuZDogIzFiMWIyZjtcbiAgdG9wOjA7XG4gIHdpZHRoOjEwMCU7XG59XG4ubG9jYXRpb25pbnB1dHtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgb3V0bGluZTowO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMC41cmVtO1xuICBtYXJnaW46IDJweCAwcHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xuICBib3JkZXI6IG5vbmU7XG4gIGNvbG9yOiAjNTU1O1xufVxuXG4uZGlzdGFuY2VUZXh0e1xuICBmb250LXNpemU6IDEycHg7XG4gIGNvbG9yOiAjZWVlZWVlO1xuICBtYXJnaW46IDA7XG59XG4uYWxpZ24tYm90dG9tIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICBib3R0b206IDA7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nOiA1cHg7XG59XG5cbi5hbGlnbi1ib3R0b20gcHtcbiAgZm9udC1zaXplOiAxNHBcbn1cblxuaW9uLWNvbHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbmlvbi1jb2wgaW1ne1xuICB3aWR0aDogNDBweDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBwYWRkaW5nOiA0cHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwMCU7XG59XG5pb24tY29sIHAgeyBtYXJnaW46IDJweCB9XG5pb24tcm93e1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxuLmxpc3QtbWQge1xuICBtYXJnaW46IC0xcHggMCAwcHg7XG59XG4ubGFiZWwtbWR7XG4gIG1hcmdpbjogMTNweCAtNTBweCAxM3B4IDA7XG59XG4udGV4dC1pbnB1dC1tZHtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBtYXJnaW46IDhweCA1cHg7XG59XG4jbWFwIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5hY3RpdmUgaW1ne1xuICBib3JkZXI6IDNweCBzb2xpZCAjZmZjZTAwO1xufVxuXG4uY2FyTmFtZXtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGJhY2tncm91bmQ6ICMzMzM7XG4gIGNvbG9yOiAjZmZmO1xuICBwYWRkaW5nOiAycHggNHB4O1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG59XG4uY2FyU2VhdHN7XG4gIGNvbG9yOiAjNzc3O1xuICBmb250LXNpemU6IDAuN2VtO1xufVxuLmNhclByaWNle1xuICBjb2xvcjogIzc3NztcbiAgZm9udC1zaXplOiAwLjhlbTtcbn0iLCJpb24tdGl0bGUge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbi1sZWZ0OiAtNDBweCAhaW1wb3J0YW50O1xuICBsZXR0ZXItc3BhY2luZzogNHB4O1xufVxuXG4uaGVhZGVyLW1kOmFmdGVyIHtcbiAgYmFja2dyb3VuZDogbm9uZTtcbn1cblxuLmxvY2F0aW9uaW5wdXQtaG9sZGVyIHtcbiAgcGFkZGluZzogMC4ycmVtIDFyZW07XG4gIGJhY2tncm91bmQ6ICMxYjFiMmY7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5sb2NhdGlvbmlucHV0IHtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgb3V0bGluZTogMDtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDAuNXJlbTtcbiAgbWFyZ2luOiAycHggMHB4O1xuICBmb250LXNpemU6IDE0cHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgYm9yZGVyOiBub25lO1xuICBjb2xvcjogIzU1NTtcbn1cblxuLmRpc3RhbmNlVGV4dCB7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgY29sb3I6ICNlZWVlZWU7XG4gIG1hcmdpbjogMDtcbn1cblxuLmFsaWduLWJvdHRvbSB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogNXB4O1xufVxuXG4uYWxpZ24tYm90dG9tIHAge1xuICBmb250LXNpemU6IDE0cDtcbn1cblxuaW9uLWNvbCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbmlvbi1jb2wgaW1nIHtcbiAgd2lkdGg6IDQwcHg7XG4gIGhlaWdodDogNDBweDtcbiAgcGFkZGluZzogNHB4O1xuICBib3JkZXItcmFkaXVzOiAxMDAlO1xufVxuXG5pb24tY29sIHAge1xuICBtYXJnaW46IDJweDtcbn1cblxuaW9uLXJvdyB7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG59XG5cbi5saXN0LW1kIHtcbiAgbWFyZ2luOiAtMXB4IDAgMHB4O1xufVxuXG4ubGFiZWwtbWQge1xuICBtYXJnaW46IDEzcHggLTUwcHggMTNweCAwO1xufVxuXG4udGV4dC1pbnB1dC1tZCB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgbWFyZ2luOiA4cHggNXB4O1xufVxuXG4jbWFwIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5hY3RpdmUgaW1nIHtcbiAgYm9yZGVyOiAzcHggc29saWQgI2ZmY2UwMDtcbn1cblxuLmNhck5hbWUge1xuICBmb250LXNpemU6IDEycHg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgYmFja2dyb3VuZDogIzMzMztcbiAgY29sb3I6ICNmZmY7XG4gIHBhZGRpbmc6IDJweCA0cHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn1cblxuLmNhclNlYXRzIHtcbiAgY29sb3I6ICM3Nzc7XG4gIGZvbnQtc2l6ZTogMC43ZW07XG59XG5cbi5jYXJQcmljZSB7XG4gIGNvbG9yOiAjNzc3O1xuICBmb250LXNpemU6IDAuOGVtO1xufSJdfQ== */"
+module.exports = "ion-title {\n  text-align: center;\n  margin-left: -40px !important;\n  letter-spacing: 4px;\n}\n\n.header-md:after {\n  background: none;\n}\n\n.locationinput-holder {\n  padding: 0.2rem 1rem;\n  background: #1b1b2f;\n  top: 0;\n  width: 100%;\n}\n\n.locationinput {\n  background: #fff;\n  outline: 0;\n  width: 100%;\n  padding: 0.5rem;\n  margin: 2px 0px;\n  font-size: 14px;\n  border-radius: 4px;\n  border: none;\n  color: #555;\n}\n\n.distanceText {\n  font-size: 12px;\n  color: #eeeeee;\n  margin: 0;\n}\n\n.align-bottom {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  padding: 5px;\n}\n\n.align-bottom p {\n  font-size: 14p;\n}\n\nion-col {\n  text-align: center;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n\nion-col img {\n  width: 40px;\n  height: 40px;\n  padding: 4px;\n  border-radius: 100%;\n}\n\nion-col p {\n  margin: 2px;\n}\n\nion-row {\n  background: #fff;\n}\n\n.list-md {\n  margin: -1px 0 0px;\n}\n\n.label-md {\n  margin: 13px -50px 13px 0;\n}\n\n.text-input-md {\n  font-size: 14px;\n  margin: 8px 5px;\n}\n\n#map {\n  width: 100%;\n}\n\n.active img {\n  border: 3px solid #ffce00;\n}\n\n.carName {\n  font-size: 12px;\n  display: inline-block;\n  background: #333;\n  color: #fff;\n  padding: 2px 4px;\n  border-radius: 4px;\n}\n\n.carSeats {\n  color: #777;\n  font-size: 0.7em;\n}\n\n.carPrice {\n  color: #777;\n  font-size: 0.8em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9DOlxcVXNlcnNcXEVNQkVSU1BFQyAtIExvdVxcRGVza3RvcFxcS3VnaWhhblxccmlkZXIvc3JjXFxhcHBcXGhvbWVcXGhvbWUucGFnZS5zY3NzIiwic3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7RUFDQSw2QkFBQTtFQUNBLG1CQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxnQkFBQTtBQ0VGOztBREFBO0VBQ0Usb0JBQUE7RUFDQSxtQkFBQTtFQUNBLE1BQUE7RUFDQSxXQUFBO0FDR0Y7O0FEREE7RUFDRSxnQkFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtBQ0lGOztBRERBO0VBQ0UsZUFBQTtFQUNBLGNBQUE7RUFDQSxTQUFBO0FDSUY7O0FERkE7RUFDRSxlQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0FDS0Y7O0FERkE7RUFDRSxjQUFBO0FDS0Y7O0FERkE7RUFDRSxrQkFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDRCQUFBO0VBQUEsNkJBQUE7VUFBQSxzQkFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0FDS0Y7O0FESEE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxtQkFBQTtBQ01GOztBREpBO0VBQVksV0FBQTtBQ1FaOztBRFBBO0VBQ0UsZ0JBQUE7QUNVRjs7QURSQTtFQUNFLGtCQUFBO0FDV0Y7O0FEVEE7RUFDRSx5QkFBQTtBQ1lGOztBRFZBO0VBQ0UsZUFBQTtFQUNBLGVBQUE7QUNhRjs7QURYQTtFQUNFLFdBQUE7QUNjRjs7QURYQTtFQUNFLHlCQUFBO0FDY0Y7O0FEWEE7RUFDRSxlQUFBO0VBQ0EscUJBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0FDY0Y7O0FEWkE7RUFDRSxXQUFBO0VBQ0EsZ0JBQUE7QUNlRjs7QURiQTtFQUNFLFdBQUE7RUFDQSxnQkFBQTtBQ2dCRiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdGl0bGV7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIG1hcmdpbi1sZWZ0OiAtNDBweCAhaW1wb3J0YW50O1xyXG4gIGxldHRlci1zcGFjaW5nOiA0cHg7XHJcbn1cclxuLmhlYWRlci1tZDphZnRlcntcclxuICBiYWNrZ3JvdW5kOiBub25lO1xyXG59XHJcbi5sb2NhdGlvbmlucHV0LWhvbGRlcntcclxuICBwYWRkaW5nOiAwLjJyZW0gMXJlbTtcclxuICBiYWNrZ3JvdW5kOiAjMWIxYjJmO1xyXG4gIHRvcDowO1xyXG4gIHdpZHRoOjEwMCU7XHJcbn1cclxuLmxvY2F0aW9uaW5wdXR7XHJcbiAgYmFja2dyb3VuZDogI2ZmZjtcclxuICBvdXRsaW5lOjA7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgcGFkZGluZzogMC41cmVtO1xyXG4gIG1hcmdpbjogMnB4IDBweDtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gIGJvcmRlcjogbm9uZTtcclxuICBjb2xvcjogIzU1NTtcclxufVxyXG5cclxuLmRpc3RhbmNlVGV4dHtcclxuICBmb250LXNpemU6IDEycHg7XHJcbiAgY29sb3I6ICNlZWVlZWU7XHJcbiAgbWFyZ2luOiAwO1xyXG59XHJcbi5hbGlnbi1ib3R0b20ge1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICBib3R0b206IDA7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgcGFkZGluZzogNXB4O1xyXG59XHJcblxyXG4uYWxpZ24tYm90dG9tIHB7XHJcbiAgZm9udC1zaXplOiAxNHBcclxufVxyXG5cclxuaW9uLWNvbHtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn1cclxuaW9uLWNvbCBpbWd7XHJcbiAgd2lkdGg6IDQwcHg7XHJcbiAgaGVpZ2h0OiA0MHB4O1xyXG4gIHBhZGRpbmc6IDRweDtcclxuICBib3JkZXItcmFkaXVzOiAxMDAlO1xyXG59XHJcbmlvbi1jb2wgcCB7IG1hcmdpbjogMnB4IH1cclxuaW9uLXJvd3tcclxuICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG59XHJcbi5saXN0LW1kIHtcclxuICBtYXJnaW46IC0xcHggMCAwcHg7XHJcbn1cclxuLmxhYmVsLW1ke1xyXG4gIG1hcmdpbjogMTNweCAtNTBweCAxM3B4IDA7XHJcbn1cclxuLnRleHQtaW5wdXQtbWR7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIG1hcmdpbjogOHB4IDVweDtcclxufVxyXG4jbWFwIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLmFjdGl2ZSBpbWd7XHJcbiAgYm9yZGVyOiAzcHggc29saWQgI2ZmY2UwMDtcclxufVxyXG5cclxuLmNhck5hbWV7XHJcbiAgZm9udC1zaXplOiAxMnB4O1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBiYWNrZ3JvdW5kOiAjMzMzO1xyXG4gIGNvbG9yOiAjZmZmO1xyXG4gIHBhZGRpbmc6IDJweCA0cHg7XHJcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG59XHJcbi5jYXJTZWF0c3tcclxuICBjb2xvcjogIzc3NztcclxuICBmb250LXNpemU6IDAuN2VtO1xyXG59XHJcbi5jYXJQcmljZXtcclxuICBjb2xvcjogIzc3NztcclxuICBmb250LXNpemU6IDAuOGVtO1xyXG59IiwiaW9uLXRpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW4tbGVmdDogLTQwcHggIWltcG9ydGFudDtcbiAgbGV0dGVyLXNwYWNpbmc6IDRweDtcbn1cblxuLmhlYWRlci1tZDphZnRlciB7XG4gIGJhY2tncm91bmQ6IG5vbmU7XG59XG5cbi5sb2NhdGlvbmlucHV0LWhvbGRlciB7XG4gIHBhZGRpbmc6IDAuMnJlbSAxcmVtO1xuICBiYWNrZ3JvdW5kOiAjMWIxYjJmO1xuICB0b3A6IDA7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4ubG9jYXRpb25pbnB1dCB7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG4gIG91dGxpbmU6IDA7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nOiAwLjVyZW07XG4gIG1hcmdpbjogMnB4IDBweDtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG4gIGJvcmRlcjogbm9uZTtcbiAgY29sb3I6ICM1NTU7XG59XG5cbi5kaXN0YW5jZVRleHQge1xuICBmb250LXNpemU6IDEycHg7XG4gIGNvbG9yOiAjZWVlZWVlO1xuICBtYXJnaW46IDA7XG59XG5cbi5hbGlnbi1ib3R0b20ge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMDtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDVweDtcbn1cblxuLmFsaWduLWJvdHRvbSBwIHtcbiAgZm9udC1zaXplOiAxNHA7XG59XG5cbmlvbi1jb2wge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG5pb24tY29sIGltZyB7XG4gIHdpZHRoOiA0MHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIHBhZGRpbmc6IDRweDtcbiAgYm9yZGVyLXJhZGl1czogMTAwJTtcbn1cblxuaW9uLWNvbCBwIHtcbiAgbWFyZ2luOiAycHg7XG59XG5cbmlvbi1yb3cge1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxuXG4ubGlzdC1tZCB7XG4gIG1hcmdpbjogLTFweCAwIDBweDtcbn1cblxuLmxhYmVsLW1kIHtcbiAgbWFyZ2luOiAxM3B4IC01MHB4IDEzcHggMDtcbn1cblxuLnRleHQtaW5wdXQtbWQge1xuICBmb250LXNpemU6IDE0cHg7XG4gIG1hcmdpbjogOHB4IDVweDtcbn1cblxuI21hcCB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uYWN0aXZlIGltZyB7XG4gIGJvcmRlcjogM3B4IHNvbGlkICNmZmNlMDA7XG59XG5cbi5jYXJOYW1lIHtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGJhY2tncm91bmQ6ICMzMzM7XG4gIGNvbG9yOiAjZmZmO1xuICBwYWRkaW5nOiAycHggNHB4O1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG59XG5cbi5jYXJTZWF0cyB7XG4gIGNvbG9yOiAjNzc3O1xuICBmb250LXNpemU6IDAuN2VtO1xufVxuXG4uY2FyUHJpY2Uge1xuICBjb2xvcjogIzc3NztcbiAgZm9udC1zaXplOiAwLjhlbTtcbn0iXX0= */"
 
 /***/ }),
 
@@ -28316,6 +28316,7 @@ var HomePage = /** @class */ (function () {
         this.vehicles = [];
         this.note = '';
         this.promocode = '';
+        this.dropOff = [];
         this.distance = 0;
         this.duration = 0;
         this.paymentMethod = 'cash';
@@ -28336,13 +28337,16 @@ var HomePage = /** @class */ (function () {
                 _this.user = _this.authService.getUserData();
             }
         });
-        console.log("calling");
+        //console.log("calling");
         this.origin = this.tripService.getOrigin();
         this.destination = this.tripService.getDestination();
+        this.dropOff = [];
+        this.dropOff = this.tripService.getDropoff();
+        //console.log('THE DROP' + JSON.stringify(this.dropOff));
         this.loadMap();
     };
     HomePage.prototype.ngOnInit = function () {
-        console.log("calling");
+        //console.log("calling");
     };
     HomePage.prototype.ionViewWillLeave = function () {
         clearInterval(this.driverTracking);
@@ -28418,15 +28422,17 @@ var HomePage = /** @class */ (function () {
         var _this = this;
         // get current location
         return this.geolocation.getCurrentPosition().then(function (resp) {
-            if (_this.origin)
+            if (_this.origin) {
                 _this.startLatLng = new google.maps.LatLng(_this.origin.location.lat, _this.origin.location.lng);
-            else
+            }
+            else {
                 _this.startLatLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+            }
             var directionsDisplay;
             var directionsService = new google.maps.DirectionsService();
             directionsDisplay = new google.maps.DirectionsRenderer({
                 polylineOptions: {
-                    strokeColor: "black"
+                    strokeColor: 'black'
                 }
             });
             var mapOptions = src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_13__["environment"].mapOptions;
@@ -28471,31 +28477,55 @@ var HomePage = /** @class */ (function () {
                             directionsService.route(request, function (result, status) {
                                 if (status == google.maps.DirectionsStatus.OK && result.routes.length != 0) {
                                     console.log(result);
-                                    _this.distance = result.routes[0].legs[0].distance.value / 1000;
-                                    _this.distanceText = result.routes[0].legs[0].distance.text;
-                                    _this.durationText = result.routes[0].legs[0].duration.text;
-                                    console.log(_this.distance);
-                                    for (var i = 0; i < _this.vehicles.length; i++) {
+                                    // this.distance = result.routes[0].legs[0].distance.value / 1000;
+                                    // this.distanceText = result.routes[0].legs[0].distance.text;
+                                    // this.durationText = result.routes[0].legs[0].duration.text;
+                                    //console.log(this.distance);
+                                    var totalDist = 0;
+                                    var totalTime = 0;
+                                    var myroute = result.routes[0];
+                                    for (var i = 0; i < myroute.legs.length; i++) {
+                                        totalDist += myroute.legs[i].distance.value;
+                                        totalTime += myroute.legs[i].duration.value;
+                                    }
+                                    _this.distance = totalDist / 1000;
+                                    totalDist = totalDist / 1000;
+                                    _this.distanceText = totalDist.toFixed(1) + ' km';
+                                    totalTime = totalTime / 60;
+                                    if ((totalTime / 60) > 1) {
+                                        var totalhour = Math.trunc(totalTime / 60);
+                                        var totalMins = Math.trunc(totalTime % 60);
+                                        var hourText = totalhour > 1 ? totalhour + ' hours' : totalhour + ' hour';
+                                        var minsText = totalMins > 1 ? totalMins + ' mins' : totalMins + ' min';
+                                        _this.durationText = hourText + ' ' + minsText;
+                                    }
+                                    else {
+                                        var totalMins = Math.trunc(totalTime % 60);
+                                        _this.durationText = totalTime > 1 ? totalMins + ' mins' : totalMins + ' min';
+                                    }
+                                    for (var i_1 = 0; i_1 < _this.vehicles.length; i_1++) {
                                         // Calculating base fare if distance between base km
-                                        if (_this.distance <= parseInt(_this.vehicles[i].base_km)) {
-                                            var fee = parseFloat((_this.distance * parseInt(_this.vehicles[i].base_fare)).toFixed(2));
-                                            _this.vehicles[i].fee = fee;
-                                            _this.vehicles[i].fee_taxed = parseFloat((fee + (fee * (parseInt(_this.vehicles[i].tax) / 100))).toFixed(2));
+                                        if (_this.distance <= parseInt(_this.vehicles[i_1].base_km)) {
+                                            var fee = parseFloat((_this.distance * parseInt(_this.vehicles[i_1].base_fare)).toFixed(2));
+                                            _this.vehicles[i_1].fee = fee;
+                                            _this.vehicles[i_1].fee_taxed = parseFloat((fee + (fee * (parseInt(_this.vehicles[i_1].tax) / 100))).toFixed(2));
                                         }
                                         // Calculating base fare if distance above base km
-                                        else if (_this.distance > parseInt(_this.vehicles[i].base_km)) {
-                                            var extraKm = _this.distance - parseInt(_this.vehicles[i].base_km);
-                                            var fee = parseFloat(((parseInt(_this.vehicles[i].base_km) * parseInt(_this.vehicles[i].base_fare)) + (extraKm * parseInt(_this.vehicles[i].per_km))).toFixed(2));
-                                            _this.vehicles[i].fee = fee;
-                                            _this.vehicles[i].fee_taxed = parseFloat((fee + (fee * (parseInt(_this.vehicles[i].tax) / 100))).toFixed(2));
+                                        else if (_this.distance > parseInt(_this.vehicles[i_1].base_km)) {
+                                            var extraKm = _this.distance - parseInt(_this.vehicles[i_1].base_km);
+                                            var fee = parseFloat(((parseInt(_this.vehicles[i_1].base_km) * parseInt(_this.vehicles[i_1].base_fare)) + (extraKm * parseInt(_this.vehicles[i_1].per_km))).toFixed(2));
+                                            _this.vehicles[i_1].fee = fee;
+                                            _this.vehicles[i_1].fee_taxed = parseFloat((fee + (fee * (parseInt(_this.vehicles[i_1].tax) / 100))).toFixed(2));
                                         }
-                                        if (_this.vehicles[i].commission_type == 'percentage') {
-                                            _this.vehicles[i].commission = parseFloat((_this.vehicles[i].fee * (parseInt(_this.vehicles[i].commission_value) / 100)).toFixed(2));
+                                        if (_this.vehicles[i_1].commission_type == 'percentage') {
+                                            _this.vehicles[i_1].commission = parseFloat((_this.vehicles[i_1].fee * (parseInt(_this.vehicles[i_1].commission_value) / 100)).toFixed(2));
                                         }
                                         else {
-                                            _this.vehicles[i].commission = parseFloat(parseFloat(_this.vehicles[i].commission_value).toFixed(2));
+                                            _this.vehicles[i_1].commission = parseFloat(parseFloat(_this.vehicles[i_1].commission_value).toFixed(2));
                                         }
                                     }
+                                    console.log('TOTAL DISTANCE' + _this.distanceText);
+                                    console.log('TOTAL DURATION' + _this.durationText);
                                 }
                                 else {
                                     console.log("error");
@@ -28518,11 +28548,27 @@ var HomePage = /** @class */ (function () {
                 bounds.extend(_this.startLatLng);
                 bounds.extend(_this.destLatLng);
                 mapx.fitBounds(bounds);
-                var request = {
-                    origin: _this.startLatLng,
-                    destination: _this.destLatLng,
-                    travelMode: google.maps.TravelMode.DRIVING
-                };
+                if (_this.dropOff.length > 0) {
+                    var finalWaypoints_1 = [];
+                    _this.dropOff.forEach(function (item) {
+                        finalWaypoints_1.push({ location: item.location });
+                    });
+                    console.log("THE DROP OFF " + JSON.stringify(finalWaypoints_1));
+                    var request = {
+                        origin: _this.startLatLng,
+                        destination: _this.destLatLng,
+                        waypoints: finalWaypoints_1,
+                        travelMode: google.maps.TravelMode.DRIVING
+                    };
+                }
+                else {
+                    // tslint:disable-next-line: prefer-const
+                    var request = {
+                        origin: _this.startLatLng,
+                        destination: _this.destLatLng,
+                        travelMode: google.maps.TravelMode.DRIVING
+                    };
+                }
                 directionsService.route(request, function (response, status) {
                     if (status == google.maps.DirectionsStatus.OK) {
                         console.log(response);
@@ -28651,7 +28697,7 @@ var HomePage = /** @class */ (function () {
                 if (snapshot == null) {
                     // create a record
                     console.log(snapshot);
-                    _this.dealService.makeDeal(driver.key, _this.tripService.getOrigin(), _this.tripService.getDestination(), _this.tripService.getDistance(), _this.tripService.getFee(), _this.tripService.getCurrency(), _this.tripService.getNote(), _this.tripService.getPaymentMethod(), _this.tripService.getPromo(), _this.tripService.getDiscount(), _this.tripService.getTax(), _this.tripService.getFeeTaxed(), _this.tripService.getRawFee(), _this.tripService.getCommissionType(), _this.tripService.getCommissionValue(), _this.tripService.getCommission()).then(function () {
+                    _this.dealService.makeDeal(driver.key, _this.tripService.getOrigin(), _this.tripService.getDestination(), _this.tripService.getDropoff(), _this.tripService.getDistance(), _this.tripService.getFee(), _this.tripService.getCurrency(), _this.tripService.getNote(), _this.tripService.getPaymentMethod(), _this.tripService.getPromo(), _this.tripService.getDiscount(), _this.tripService.getTax(), _this.tripService.getFeeTaxed(), _this.tripService.getRawFee(), _this.tripService.getCommissionType(), _this.tripService.getCommissionValue(), _this.tripService.getCommission()).then(function () {
                         var sub = _this.dealService.getDriverDeal(driver.key).valueChanges().subscribe(function (snap) {
                             // if record doesn't exist or is accepted
                             if (snap === null || snap.status != src_environments_environment_prod__WEBPACK_IMPORTED_MODULE_13__["DEAL_STATUS_PENDING"]) {
@@ -28706,6 +28752,19 @@ var HomePage = /** @class */ (function () {
                 type: 'destination'
             }
         });
+    };
+    // choose dropoff place
+    HomePage.prototype.chooseDropOff = function (dropOffIndex) {
+        this.router.navigate(['map'], {
+            queryParams: {
+                type: 'dropoff',
+                dropOffIndex: dropOffIndex
+            }
+        });
+    };
+    HomePage.prototype.removeDropOff = function (dropOffIndex) {
+        this.dropOff = this.tripService.removeDropOff(dropOffIndex);
+        this.loadMap();
     };
     HomePage.prototype.choosePaymentMethod = function () {
         this.router.navigateByUrl('/payments');
@@ -28858,13 +28917,14 @@ var DealService = /** @class */ (function () {
         });
     };
     // make deal to driver
-    DealService.prototype.makeDeal = function (driverId, origin, destination, distance, fee, currency, note, paymentMethod, promocode, discount, tax, fee_taxed, rawfee, commission_type, commission_value, commission) {
+    DealService.prototype.makeDeal = function (driverId, origin, destination, dropOff, distance, fee, currency, note, paymentMethod, promocode, discount, tax, fee_taxed, rawfee, commission_type, commission_value, commission) {
         var user = this.authService.getUserData();
         return this.db.object('deals/' + driverId).set({
             passengerId: user.uid,
             currency: currency,
             origin: origin,
             destination: destination,
+            dropOff: dropOff,
             distance: distance,
             fee: fee,
             note: note,

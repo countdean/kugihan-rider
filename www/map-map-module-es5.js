@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"dark\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n    <input class=\"locationinput\" type=\"text\" id=\"searchbar\" #searchbar placeholder=\"search location or drag map\" />\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"selectPlace()\">{{'DONE' | translate}}</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <p class=\"place-text\">{{ address ? address.formatted_address : '' }}</p>\n  <div #map id=\"map\"></div>\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <input class=\"locationinput\" type=\"text\" id=\"searchbar\" #searchbar placeholder=\"search location or drag map\" />\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"selectPlace()\">{{'DONE' | translate}}</ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <p class=\"place-text\">{{ address ? address.formatted_address : '' }}</p>\r\n  <div #map id=\"map\"></div>\r\n</ion-content>"
 
 /***/ }),
 
@@ -72,7 +72,7 @@ var MapPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#map {\n  height: 100%;\n}\n\n.marker {\n  position: fixed;\n  z-index: 1000;\n  top: 45%;\n  left: 45%;\n}\n\n.locationinput {\n  background: #eee;\n  border: 0;\n  outline: 0;\n  width: 100%;\n  padding: 0.5rem;\n  color: #333;\n  margin: 4px;\n  font-size: 14px;\n  border-radius: 4px;\n}\n\n.place-text {\n  margin: 4px 0px;\n  font-size: 12px;\n  text-align: center;\n  color: #777;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFwL0Q6XFxLVUdJSEFOIEVYUFJFU1NcXFNZU1RFTSAyMDIwXFxLdWdpaGFuIEV4cHJlc3NcXEt1Z2loYW4gRXhwcmVzc1xca3VnaWhhbi1leHByZXNzXFxyaWRlci9zcmNcXGFwcFxcbWFwXFxtYXAucGFnZS5zY3NzIiwic3JjL2FwcC9tYXAvbWFwLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7QUNDSjs7QURFRTtFQUNFLGVBQUE7RUFDQSxhQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7QUNDSjs7QURFRTtFQUNFLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0FDQ0o7O0FEQ0E7RUFDRSxlQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvbWFwL21hcC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWFwIHtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gIH1cblxuICAubWFya2VyIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgei1pbmRleDogMTAwMDtcbiAgICB0b3A6NDUlO1xuICAgIGxlZnQ6IDQ1JTs7XG4gIH1cblxuICAubG9jYXRpb25pbnB1dHtcbiAgICBiYWNrZ3JvdW5kOiAjZWVlO1xuICAgIGJvcmRlcjowO1xuICAgIG91dGxpbmU6MDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBwYWRkaW5nOiAwLjVyZW07XG4gICAgY29sb3I6ICMzMzM7XG4gICAgbWFyZ2luOiA0cHg7XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgfVxuLnBsYWNlLXRleHR7XG4gIG1hcmdpbjogNHB4IDBweDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiAjNzc3O1xufSIsIiNtYXAge1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbi5tYXJrZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHotaW5kZXg6IDEwMDA7XG4gIHRvcDogNDUlO1xuICBsZWZ0OiA0NSU7XG59XG5cbi5sb2NhdGlvbmlucHV0IHtcbiAgYmFja2dyb3VuZDogI2VlZTtcbiAgYm9yZGVyOiAwO1xuICBvdXRsaW5lOiAwO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMC41cmVtO1xuICBjb2xvcjogIzMzMztcbiAgbWFyZ2luOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xufVxuXG4ucGxhY2UtdGV4dCB7XG4gIG1hcmdpbjogNHB4IDBweDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiAjNzc3O1xufSJdfQ== */"
+module.exports = "#map {\n  height: 100%;\n}\n\n.marker {\n  position: fixed;\n  z-index: 1000;\n  top: 45%;\n  left: 45%;\n}\n\n.locationinput {\n  background: #eee;\n  border: 0;\n  outline: 0;\n  width: 100%;\n  padding: 0.5rem;\n  color: #333;\n  margin: 4px;\n  font-size: 14px;\n  border-radius: 4px;\n}\n\n.place-text {\n  margin: 4px 0px;\n  font-size: 12px;\n  text-align: center;\n  color: #777;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFwL0M6XFxVc2Vyc1xcRU1CRVJTUEVDIC0gTG91XFxEZXNrdG9wXFxLdWdpaGFuXFxyaWRlci9zcmNcXGFwcFxcbWFwXFxtYXAucGFnZS5zY3NzIiwic3JjL2FwcC9tYXAvbWFwLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7QUNDSjs7QURFRTtFQUNFLGVBQUE7RUFDQSxhQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7QUNDSjs7QURFRTtFQUNFLGdCQUFBO0VBQ0EsU0FBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0FDQ0o7O0FEQ0E7RUFDRSxlQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvbWFwL21hcC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWFwIHtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICB9XHJcblxyXG4gIC5tYXJrZXIge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgei1pbmRleDogMTAwMDtcclxuICAgIHRvcDo0NSU7XHJcbiAgICBsZWZ0OiA0NSU7O1xyXG4gIH1cclxuXHJcbiAgLmxvY2F0aW9uaW5wdXR7XHJcbiAgICBiYWNrZ3JvdW5kOiAjZWVlO1xyXG4gICAgYm9yZGVyOjA7XHJcbiAgICBvdXRsaW5lOjA7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHBhZGRpbmc6IDAuNXJlbTtcclxuICAgIGNvbG9yOiAjMzMzO1xyXG4gICAgbWFyZ2luOiA0cHg7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XHJcbiAgfVxyXG4ucGxhY2UtdGV4dHtcclxuICBtYXJnaW46IDRweCAwcHg7XHJcbiAgZm9udC1zaXplOiAxMnB4O1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBjb2xvcjogIzc3NztcclxufSIsIiNtYXAge1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbi5tYXJrZXIge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHotaW5kZXg6IDEwMDA7XG4gIHRvcDogNDUlO1xuICBsZWZ0OiA0NSU7XG59XG5cbi5sb2NhdGlvbmlucHV0IHtcbiAgYmFja2dyb3VuZDogI2VlZTtcbiAgYm9yZGVyOiAwO1xuICBvdXRsaW5lOiAwO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMC41cmVtO1xuICBjb2xvcjogIzMzMztcbiAgbWFyZ2luOiA0cHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xufVxuXG4ucGxhY2UtdGV4dCB7XG4gIG1hcmdpbjogNHB4IDBweDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiAjNzc3O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -166,7 +166,7 @@ var MapPage = /** @class */ (function () {
     MapPage.prototype.selectPlace = function () {
         var _this = this;
         var address = this.placeService.formatAddress(this.address);
-        console.log(address);
+        //console.log(address);
         this.route.queryParams.subscribe(function (data) {
             var type = data.type;
             if (type == 'origin') {
@@ -174,6 +174,9 @@ var MapPage = /** @class */ (function () {
             }
             else if (type == 'destination') {
                 _this.tripService.setDestination(address.vicinity, address.location.lat, address.location.lng);
+            }
+            else {
+                _this.tripService.setDropOff(address.vicinity, address.location.lat, address.location.lng, data.dropOffIndex);
             }
             _this.router.navigateByUrl('/home');
         });

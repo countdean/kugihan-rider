@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"dark\">\n    <ion-title>{{'ON_THE_WAY' | translate}}</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button color=\"danger\" fill=\"solid\" size=\"small\" *ngIf=\"trip.status == 'waiting'\" (click)=\"cancelTrip()\">\n        {{'CANCEL_TRIP' | translate}}\n      </ion-button>\n      <ion-button fill=\"solid\" color=\"danger\" href=\"tel:{{sos}}\" *ngIf=\"trip.status == 'going'\">{{'SOS' | translate}}\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div id=\"map\" style=\"height:100%\"></div>\n  <ion-card>\n    <div style=\"text-align:right; color: #222\">\n      <span style=\"background:#ffff00\">{{ 'OTP' | translate}}: {{ (trip)?.otp }}</span>\n    </div>\n    <ion-item lines=\"none\">\n      <ion-avatar slot=\"start\">\n        <img src=\"{{ (driver)?.photoURL }}\" />\n      </ion-avatar>\n      <ion-label>\n        <ion-text>\n          <h2>{{ (driver)?.name }} &nbsp; {{(driver)?.rating}} <ion-icon name=\"md-star\" color=\"yellow\"></ion-icon>\n          </h2>\n        </ion-text>\n        <ion-text>\n          <p>{{ (driver)?.plate }} &middot; {{ (driver)?.brand }}</p>\n        </ion-text>\n      </ion-label>\n      <ion-button color=\"dark\" slot=\"end\" href=\"tel: {{ (driver)?.phoneNumber }} \">\n        <ion-icon name=\"call\"></ion-icon>&nbsp;{{'CALL' | translate}}\n      </ion-button>\n    </ion-item>\n    <ion-row>\n      <ion-col>\n        <p>{{'DISTANCE' | translate}}</p>\n        <h5>{{distanceText}}</h5>\n      </ion-col>\n      <ion-col>\n        <p>{{'PRICE' | translate}}</p>\n        <h5>{{ trip.currency }} {{trip.fee}}</h5>\n      </ion-col>\n      <ion-col>\n        <p>{{'ETA' | translate}}</p>\n        <h5>{{durationText}}</h5>\n      </ion-col>\n      <ion-col>\n        <p>{{'PAYMENT' | translate}}</p>\n        <h5>{{trip.paymentMethod}}</h5>\n      </ion-col>\n    </ion-row>\n  </ion-card>\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n    <ion-title>{{'ON_THE_WAY' | translate}}</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button color=\"danger\" fill=\"solid\" size=\"small\" *ngIf=\"trip.status == 'waiting'\" (click)=\"cancelTrip()\">\r\n        {{'CANCEL_TRIP' | translate}}\r\n      </ion-button>\r\n      <ion-button fill=\"solid\" color=\"danger\" href=\"tel:{{sos}}\" *ngIf=\"trip.status == 'going'\">{{'SOS' | translate}}\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div id=\"map\" style=\"height:100%\"></div>\r\n  <ion-card>\r\n    <!-- <div style=\"text-align:right; color: #222\">\r\n      <span style=\"background:#ffff00\">{{ 'OTP' | translate}}: {{ (trip)?.otp }}</span>\r\n    </div> -->\r\n    <ion-item lines=\"none\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"{{ (driver)?.photoURL }}\" />\r\n      </ion-avatar>\r\n      <ion-label>\r\n        <ion-text>\r\n          <h2>{{ (driver)?.name }} &nbsp; {{(driver)?.rating}} <ion-icon name=\"md-star\" color=\"yellow\"></ion-icon>\r\n          </h2>\r\n        </ion-text>\r\n        <ion-text>\r\n          <p>{{ (driver)?.plate }} &middot; {{ (driver)?.brand }}</p>\r\n        </ion-text>\r\n      </ion-label>\r\n      <ion-button color=\"dark\" slot=\"end\" href=\"tel: {{ (driver)?.phoneNumber }} \">\r\n        <ion-icon name=\"call\"></ion-icon>&nbsp;{{'CALL' | translate}}\r\n      </ion-button>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <p>{{'DISTANCE' | translate}}</p>\r\n        <h5>{{distanceText}}</h5>\r\n      </ion-col>\r\n      <ion-col>\r\n        <p>{{'PRICE' | translate}}</p>\r\n        <h5>{{ trip.currency }} {{trip.fee}}</h5>\r\n      </ion-col>\r\n      <ion-col>\r\n        <p>{{'ETA' | translate}}</p>\r\n        <h5>{{durationText}}</h5>\r\n      </ion-col>\r\n      <ion-col>\r\n        <p>{{'PAYMENT' | translate}}</p>\r\n        <h5>{{trip.paymentMethod}}</h5>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-card>\r\n</ion-content>"
 
 /***/ }),
 
@@ -72,7 +72,7 @@ var TrackingPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-col p, h5 {\n  margin: 0;\n  text-align: center;\n}\n\nion-col h5 {\n  font-size: 16px;\n  color: #333;\n}\n\nion-card {\n  position: absolute;\n  z-index: 999999;\n  background: #fff;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  padding: 8px;\n}\n\n.footer-md:before {\n  background-image: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdHJhY2tpbmcvRDpcXEtVR0lIQU4gRVhQUkVTU1xcU1lTVEVNIDIwMjBcXEt1Z2loYW4gRXhwcmVzc1xcS3VnaWhhbiBFeHByZXNzXFxrdWdpaGFuLWV4cHJlc3NcXHJpZGVyL3NyY1xcYXBwXFx0cmFja2luZ1xcdHJhY2tpbmcucGFnZS5zY3NzIiwic3JjL2FwcC90cmFja2luZy90cmFja2luZy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxTQUFBO0VBQ0Esa0JBQUE7QUNDSjs7QURDQTtFQUNJLGVBQUE7RUFDQSxXQUFBO0FDRUo7O0FEQ0E7RUFDSSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFlBQUE7QUNFSjs7QURDQTtFQUNJLGlDQUFBO0FDRUoiLCJmaWxlIjoic3JjL2FwcC90cmFja2luZy90cmFja2luZy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29sIHAsIGg1e1xuICAgIG1hcmdpbjowO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cbmlvbi1jb2wgaDV7XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICAgIGNvbG9yOiAjMzMzO1xufVxuXG5pb24tY2FyZHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgei1pbmRleDogOTk5OTk5O1xuICAgIGJhY2tncm91bmQ6ICNmZmY7XG4gICAgYm90dG9tOiAwO1xuICAgIGxlZnQ6IDA7XG4gICAgcmlnaHQ6IDA7XG4gICAgcGFkZGluZzogOHB4O1xufVxuXG4uZm9vdGVyLW1kOmJlZm9yZXtcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiBub25lICFpbXBvcnRhbnQ7XG59IiwiaW9uLWNvbCBwLCBoNSB7XG4gIG1hcmdpbjogMDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG5pb24tY29sIGg1IHtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBjb2xvcjogIzMzMztcbn1cblxuaW9uLWNhcmQge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHotaW5kZXg6IDk5OTk5OTtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgcGFkZGluZzogOHB4O1xufVxuXG4uZm9vdGVyLW1kOmJlZm9yZSB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IG5vbmUgIWltcG9ydGFudDtcbn0iXX0= */"
+module.exports = "ion-col p, h5 {\n  margin: 0;\n  text-align: center;\n}\n\nion-col h5 {\n  font-size: 16px;\n  color: #333;\n}\n\nion-card {\n  position: absolute;\n  z-index: 999999;\n  background: #fff;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  padding: 8px;\n}\n\n.footer-md:before {\n  background-image: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdHJhY2tpbmcvQzpcXFVzZXJzXFxFTUJFUlNQRUMgLSBMb3VcXERlc2t0b3BcXEt1Z2loYW5cXHJpZGVyL3NyY1xcYXBwXFx0cmFja2luZ1xcdHJhY2tpbmcucGFnZS5zY3NzIiwic3JjL2FwcC90cmFja2luZy90cmFja2luZy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxTQUFBO0VBQ0Esa0JBQUE7QUNDSjs7QURDQTtFQUNJLGVBQUE7RUFDQSxXQUFBO0FDRUo7O0FEQ0E7RUFDSSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLFNBQUE7RUFDQSxPQUFBO0VBQ0EsUUFBQTtFQUNBLFlBQUE7QUNFSjs7QURDQTtFQUNJLGlDQUFBO0FDRUoiLCJmaWxlIjoic3JjL2FwcC90cmFja2luZy90cmFja2luZy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY29sIHAsIGg1e1xyXG4gICAgbWFyZ2luOjA7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuaW9uLWNvbCBoNXtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIGNvbG9yOiAjMzMzO1xyXG59XHJcblxyXG5pb24tY2FyZHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHotaW5kZXg6IDk5OTk5OTtcclxuICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICBsZWZ0OiAwO1xyXG4gICAgcmlnaHQ6IDA7XHJcbiAgICBwYWRkaW5nOiA4cHg7XHJcbn1cclxuXHJcbi5mb290ZXItbWQ6YmVmb3Jle1xyXG4gICAgYmFja2dyb3VuZC1pbWFnZTogbm9uZSAhaW1wb3J0YW50O1xyXG59IiwiaW9uLWNvbCBwLCBoNSB7XG4gIG1hcmdpbjogMDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG5pb24tY29sIGg1IHtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBjb2xvcjogIzMzMztcbn1cblxuaW9uLWNhcmQge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHotaW5kZXg6IDk5OTk5OTtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgcGFkZGluZzogOHB4O1xufVxuXG4uZm9vdGVyLW1kOmJlZm9yZSB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IG5vbmUgIWltcG9ydGFudDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -194,11 +194,26 @@ var TrackingPage = /** @class */ (function () {
         directionsDisplay.setMap(this.map);
         var origin = new google.maps.LatLng(this.trip.origin.location.lat, this.trip.origin.location.lng);
         var dest = new google.maps.LatLng(this.trip.destination.location.lat, this.trip.destination.location.lng);
-        var request = {
-            origin: origin,
-            destination: dest,
-            travelMode: google.maps.TravelMode.DRIVING
-        };
+        if (this.trip.dropOff.length > 0) {
+            var finalWaypoints_1 = [];
+            this.trip.dropOff.forEach(function (item) {
+                finalWaypoints_1.push({ location: item.location });
+            });
+            console.log("THE DROP OFF " + JSON.stringify(finalWaypoints_1));
+            var request = {
+                origin: origin,
+                destination: dest,
+                waypoints: finalWaypoints_1,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+        }
+        else {
+            var request = {
+                origin: origin,
+                destination: dest,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+        }
         directionsService.route(request, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 console.log(response);

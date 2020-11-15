@@ -34,6 +34,8 @@
     </ion-list>
     <div style="padding:0px 16px">
       <ion-button color="dark" expand="block" (click)="login()">{{'LOGIN' | translate }}</ion-button>
+      <ion-button color="dark" expand="block" (click)="facebookLogin()">FB LOGIN</ion-button>
+      <ion-button color="dark" expand="block" (click)="googleLogin()">GOOGLE LOGIN</ion-button>
       &nbsp;&nbsp;
       <ion-button color="dark" fill="clear" expand="block" routerLink="/register">
         {{'SIGN_UP_TEXT' | translate }}

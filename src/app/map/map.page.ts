@@ -102,7 +102,7 @@ export class MapPage implements OnInit {
   selectPlace() {
 
     let address = this.placeService.formatAddress(this.address);
-    console.log(address);
+    //console.log(address);
 
     this.route.queryParams.subscribe(data => {
       let type = data.type
@@ -110,6 +110,8 @@ export class MapPage implements OnInit {
         this.tripService.setOrigin(address.vicinity, address.location.lat, address.location.lng);
       } else if (type == 'destination') {
         this.tripService.setDestination(address.vicinity, address.location.lat, address.location.lng);
+      } else {
+        this.tripService.setDropOff(address.vicinity, address.location.lat, address.location.lng, data.dropOffIndex);
       }
       this.router.navigateByUrl('/home');
 

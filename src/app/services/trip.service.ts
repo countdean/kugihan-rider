@@ -13,6 +13,7 @@ export class TripService {
   private currency: string;
   private origin: any;
   private destination: any;
+  private dropOff: Array<any> = [];
   private distance: number;
   private fee: number;
   private note: string;
@@ -68,8 +69,38 @@ export class TripService {
     return this.destination = place.getFormatted();
   }
 
+  setDropOff(vicinity, lat, lng, index) {
+    let place = new Place(vicinity, lat, lng);
+    console.log(index)
+    return this.dropOff[index] = place.getFormatted();
+  }
+
+  removeDropOff(index) {
+    //remove properly 
+    let self = this
+    let temp = [];
+    let tempindex = index - 1;
+    
+    this.dropOff.forEach(function(item, findex) {
+      //self.dropOff.splice(2,2);
+      console.log(tempindex);
+      console.log(findex);
+      console.log(item);
+      if(tempindex != findex) {
+        temp.push(item)
+      }
+    });
+    this.dropOff = [];
+    this.dropOff = temp;
+    return this.dropOff;
+  }
+
   getDestination() {
     return this.destination
+  }
+
+  getDropoff() {
+    return this.dropOff
   }
 
   setDistance(distance) {

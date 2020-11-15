@@ -50,12 +50,10 @@
   "cordova-plugin-ionic-webview": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-ionic-webview@^4.1.1"
+      "id": "cordova-plugin-ionic-webview@latest"
     },
     "is_top_level": true,
-    "variables": {
-      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-    }
+    "variables": {}
   },
   "cordova-plugin-ionic-keyboard": {
     "source": {
@@ -82,5 +80,27 @@
     },
     "is_top_level": false,
     "variables": {}
+  },
+  "cordova-plugin-facebook4": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-facebook4"
+    },
+    "is_top_level": true,
+    "variables": {
+      "APP_ID": "343974603554265",
+      "APP_NAME": "ph.kugihan.rider"
+    }
+  },
+  "cordova-plugin-googleplus": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googleplus"
+    },
+    "is_top_level": true,
+    "variables": {
+      "REVERSED_CLIENT_ID": "ph.kugihan.rider",
+      "WEB_APPLICATION_CLIENT_ID": "500907002253-tloch3u45o16bhq2cd99pfvau928mitv.apps.googleusercontent.com"
+    }
   }
 }
