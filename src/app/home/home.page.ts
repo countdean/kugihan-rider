@@ -113,8 +113,12 @@ export class HomePage implements OnInit {
     this.alertCtrl.create({
       header: "Choose Payments",
       inputs: [
-        { type: 'radio', label: "Cash", value: 'cash' },
-        { type: 'radio', label: "Card", value: 'card' }
+
+        /*{ type: 'radio', label: "Cash", value: 'cash' },
+        { type: 'radio', label: "Card", value: 'card' }*/
+        
+        /* Deleted Card Option Temporary */
+        { type: 'radio', label: "COD", value: 'cash' },
       ],
       buttons: [{
         text: "Cancel"
