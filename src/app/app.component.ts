@@ -28,11 +28,11 @@ export class AppComponent {
       url: '/history',
       icon: 'time'
     },
-    {
+    /*{
       title: 'PAYMENTS',
       url: '/payments',
       icon: 'card'
-    },
+    },*/
     {
       title: 'NOTIFICATIONS',
       url: '/notifications',
