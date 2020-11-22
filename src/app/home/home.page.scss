@@ -8,7 +8,7 @@ ion-title{
 }
 .locationinput-holder{
   padding: 0.2rem 1rem;
-  background: #1b1b2f;
+  background: #2c2ca8;
   top:0;
   width:100%;
 }
@@ -55,7 +55,7 @@ ion-col img{
 }
 ion-col p { margin: 2px }
 ion-row{
-  background: #fff;
+  background: rgb(255, 255, 255);
 }
 .list-md {
   margin: -1px 0 0px;
@@ -90,4 +90,9 @@ ion-row{
 .carPrice{
   color: #777;
   font-size: 0.8em;
+}
+
+.button-icon{
+  width: 25px;
+  height: 25px;
 }
