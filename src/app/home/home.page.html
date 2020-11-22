@@ -11,7 +11,8 @@
 <ion-content >
   <div class="locationinput-holder" [hidden]="!showDetails">
     <!-- show button -->
-    <ion-fab-button size="small" (click)="showDetails=false"><ion-icon name="arrow-dropdown"></ion-icon></ion-fab-button>
+    <ion-button class="button button-assertive button-clear" style="height: 15px;" expand="full" (click)="showDetails=false"><ion-icon class="button-icon" name="arrow-dropdown" ></ion-icon></ion-button>
+    <!--<ion-fab-button size="small" (click)="showDetails=false"><ion-icon name="arrow-dropdown"></ion-icon></ion-fab-button>-->
   </div>
   <div class="locationinput-holder" [hidden]="showDetails">
     <input class="locationinput" (click)="chooseOrigin()" placeholder="Where do you want to pickup?" type="text"
@@ -44,7 +45,9 @@
     </p>
 
     <!-- hide button -->
-    <ion-fab-button class="button-icon" size="small"><ion-icon name="arrow-dropup" (click)="showDetails=true"></ion-icon></ion-fab-button>
+    <!--<ion-fab-button class="button-icon" size="small"><ion-icon name="arrow-dropdown" (click)="showDetails=true"></ion-icon></ion-fab-button>-->
+    <ion-button class="bbutton button-assertive button-clear" style="height: 18px;" expand="full" (click)="showDetails=true"><ion-icon class="button-icon"name="arrow-dropdown"></ion-icon></ion-button>
+    <!--<ion-fab-button class="button-icon" expand="full"><ion-fab-button class="button-icon" size="small"><ion-icon name="arrow-dropdown" (click)="showDetails=true"></ion-icon></ion-fab-button>-->
   </div>
 
   <div id="{{ mapId }}" [ngStyle]="{height: '100%'}"></div>
