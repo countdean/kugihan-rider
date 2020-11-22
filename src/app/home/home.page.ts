@@ -323,6 +323,7 @@ export class HomePage implements OnInit {
 
       // add destination to map
       if (this.destination) {
+        console.log('DESTINATION' + JSON.stringify(this.destination))
         this.destLatLng = new google.maps.LatLng(this.destination.location.lat, this.destination.location.lng);
         var bounds = new google.maps.LatLngBounds();
         bounds.extend(this.startLatLng);
@@ -331,12 +332,12 @@ export class HomePage implements OnInit {
         mapx.fitBounds(bounds);
         
         if (this.dropOff.length > 0) {
-
           let finalWaypoints = [];
+          console.log(`THE DROP OFF ${JSON.stringify(this.dropOff)}`)
           this.dropOff.forEach(function(item) {
             finalWaypoints.push({location: item.location});
           });
-          console.log(`THE DROP OFF ${JSON.stringify(finalWaypoints)}`)
+          console.log(`THE FINAL DROP OFF ${JSON.stringify(finalWaypoints)}`)
 
           var request: any = {
             origin: this.startLatLng,
