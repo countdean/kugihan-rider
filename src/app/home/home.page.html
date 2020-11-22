@@ -8,8 +8,12 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <div class="locationinput-holder">
+<ion-content >
+  <div class="locationinput-holder" [hidden]="!showDetails">
+    <!-- show button -->
+    <ion-fab-button size="small" (click)="showDetails=false"><ion-icon name="arrow-dropdown"></ion-icon></ion-fab-button>
+  </div>
+  <div class="locationinput-holder" [hidden]="showDetails">
     <input class="locationinput" (click)="chooseOrigin()" placeholder="Where do you want to pickup?" type="text"
       value="{{origin ? origin.vicinity : '' }}">
     
@@ -39,6 +43,9 @@
       <span *ngIf="distanceText!=''">{{ distanceText }}</span>
       <span *ngIf="durationText!=''">&nbsp; {{durationText}}</span>
     </p>
+
+    <!-- hide button -->
+    <ion-fab-button size="small"><ion-icon name="arrow-dropup" (click)="showDetails=true"></ion-icon></ion-fab-button>
   </div>
 
   <div id="{{ mapId }}" [ngStyle]="{height: '100%'}"></div>

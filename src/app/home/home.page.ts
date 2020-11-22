@@ -61,6 +61,8 @@ export class HomePage implements OnInit {
   distanceText: any = '';
   durationText: any = '';
 
+  showDetails: boolean = false;
+
   constructor(
     private router: Router,
     private alertCtrl: AlertController,
