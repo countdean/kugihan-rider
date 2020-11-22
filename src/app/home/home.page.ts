@@ -334,15 +334,21 @@ export class HomePage implements OnInit {
         if (this.dropOff.length > 0) {
           let finalWaypoints = [];
           console.log(`THE DROP OFF ${JSON.stringify(this.dropOff)}`)
-          this.dropOff.forEach(function(item) {
-            finalWaypoints.push({location: item.location});
+          let self = this;
+          this.dropOff.forEach(function(item, index) {
+              finalWaypoints.push({location: item.location});
           });
-          console.log(`THE FINAL DROP OFF ${JSON.stringify(finalWaypoints)}`)
+          let wpoints = [{location: this.destination.location}].concat(finalWaypoints);
+          let popwpoints = wpoints.pop()
+          let finalDest = new google.maps.LatLng(popwpoints.location.lat, popwpoints.location.lng);
+          var bounds = new google.maps.LatLngBounds();
+          // console.log(`wpoints ${JSON.stringify(wpoints)}`)
+          // console.log(`finalDest ${JSON.stringify(finalDest)}`)
 
           var request: any = {
             origin: this.startLatLng,
-            destination: this.destLatLng,
-            waypoints: finalWaypoints,
+            destination: finalDest,
+            waypoints: wpoints,
             travelMode: google.maps.TravelMode.DRIVING
           };
         } else {
@@ -499,8 +505,8 @@ export class HomePage implements OnInit {
           this.dealService.makeDeal(
             driver.key,
             this.tripService.getOrigin(),
-            this.tripService.getDestination(),
-            this.tripService.getDropoff(),
+            this.tripService.getFinalDestination(),
+            this.tripService.getFinalDropOff(),
             this.tripService.getDistance(),
             this.tripService.getFee(),
             this.tripService.getCurrency(),

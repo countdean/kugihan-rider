@@ -509,7 +509,7 @@ module.exports = webpackAsyncContext;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n  <ion-split-pane>\n    <ion-menu type=\"overlay\">\n      <ion-header>\n        <ion-toolbar></ion-toolbar>\n      </ion-header>\n      <ion-content>\n        <ion-list lines=\"none\">\n          <ion-menu-toggle *ngIf=\"user != null\">\n            <ion-item routerLink=\"/profile\">\n              <ion-avatar slot=\"start\">\n                <img src=\"{{user.photoURL}}\" />\n              </ion-avatar>\n              <ion-label>\n                <h2 style=\"font-weight: 500;\">{{user.name}}</h2>\n                <p>{{user.email}}</p>\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\n              <ion-label>\n                {{p.title | translate}}\n              </ion-label>\n            </ion-item>\n          </ion-menu-toggle>\n        </ion-list>\n      </ion-content>\n      <!-- <ion-footer>\n        <ion-toolbar>\n          <ion-button expand=\"block\" (click)=\"logout()\">Logout</ion-button>\n        </ion-toolbar>\n      </ion-footer> -->\n    </ion-menu>\n    <ion-router-outlet main></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>"
+module.exports = "<ion-app>\r\n  <ion-split-pane>\r\n    <ion-menu type=\"overlay\">\r\n      <ion-header>\r\n        <ion-toolbar></ion-toolbar>\r\n      </ion-header>\r\n      <ion-content>\r\n        <ion-list lines=\"none\">\r\n          <ion-menu-toggle *ngIf=\"user != null\">\r\n            <ion-item routerLink=\"/profile\">\r\n              <ion-avatar slot=\"start\">\r\n                <img src=\"{{user.photoURL}}\" />\r\n              </ion-avatar>\r\n              <ion-label>\r\n                <h2 style=\"font-weight: 500;\">{{user.name}}</h2>\r\n                <p>{{user.email}}</p>\r\n              </ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages\">\r\n            <ion-item [routerDirection]=\"'root'\" [routerLink]=\"[p.url]\">\r\n              <ion-icon slot=\"start\" [name]=\"p.icon\"></ion-icon>\r\n              <ion-label>\r\n                {{p.title | translate}}\r\n              </ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </ion-list>\r\n      </ion-content>\r\n      <!-- <ion-footer>\r\n        <ion-toolbar>\r\n          <ion-button expand=\"block\" (click)=\"logout()\">Logout</ion-button>\r\n        </ion-toolbar>\r\n      </ion-footer> -->\r\n    </ion-menu>\r\n    <ion-router-outlet main></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>"
 
 /***/ }),
 
@@ -520,7 +520,7 @@ module.exports = "<ion-app>\n  <ion-split-pane>\n    <ion-menu type=\"overlay\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"dark\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button></ion-back-button>\n    </ion-buttons>\n    <ion-title>{{ 'RATE_TRIP' | translate}}</ion-title>\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"skip()\">\n        <ion-icon name=\"close-circle\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div style=\"text-align: center;padding: 28px\">\n    <p>{{ 'TRIP_COMPLETED' | translate}}</p>\n    <h1 style=\"font-size:36px;color:#8BC34A;font-weight: 600;\"> {{ (trip)?.currency }} {{(trip)?.fee}}</h1>\n    <p>{{trip.paymentMethod}}</p>\n    <hr style=\"border-bottom: 1px solid #eee;margin-top: 24px;\" />\n  </div>\n  <div style=\"display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center \">\n    <img src=\"{{ (driver)?.photoURL }}\" style=\"height:80px;width:80px;border-radius: 100px;\" />\n    <h3>{{(driver)?.name}}</h3>\n    <p style=\"margin:0\">{{ (driver)?.plate }} • {{ (driver)?.brand }}</p>\n    <ion-rating [rate]=\"rating\" (rateChange)=\"onRateChange($event)\"></ion-rating>\n    <div>\n      <ion-textarea rows=\"2\" [(ngModel)]=\"feedback\"></ion-textarea>\n    </div>\n    <br />\n    <ion-button color=\"dark\" size=\"small\" (click)=\"rateTrip()\">{{ 'RATE_TRIP' | translate}}</ion-button>\n  </div>\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar color=\"dark\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{ 'RATE_TRIP' | translate}}</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"skip()\">\r\n        <ion-icon name=\"close-circle\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div style=\"text-align: center;padding: 28px\">\r\n    <p>{{ 'TRIP_COMPLETED' | translate}}</p>\r\n    <h1 style=\"font-size:36px;color:#8BC34A;font-weight: 600;\"> {{ (trip)?.currency }} {{(trip)?.fee}}</h1>\r\n    <p>{{trip.paymentMethod}}</p>\r\n    <hr style=\"border-bottom: 1px solid #eee;margin-top: 24px;\" />\r\n  </div>\r\n  <div style=\"display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center \">\r\n    <img src=\"{{ (driver)?.photoURL }}\" style=\"height:80px;width:80px;border-radius: 100px;\" />\r\n    <h3>{{(driver)?.name}}</h3>\r\n    <p style=\"margin:0\">{{ (driver)?.plate }} • {{ (driver)?.brand }}</p>\r\n    <ion-rating [rate]=\"rating\" (rateChange)=\"onRateChange($event)\"></ion-rating>\r\n    <div>\r\n      <ion-textarea rows=\"2\" [(ngModel)]=\"feedback\"></ion-textarea>\r\n    </div>\r\n    <br />\r\n    <ion-button color=\"dark\" size=\"small\" (click)=\"rateTrip()\">{{ 'RATE_TRIP' | translate}}</ion-button>\r\n  </div>\r\n</ion-content>"
 
 /***/ }),
 
@@ -588,7 +588,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".header-md:after {\n  background-image: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9rdWdpaGFuZXhwcmVzcy9EZXNrdG9wL2t1Z2loYW4tcmlkZXIvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlDQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZGVyLW1kOmFmdGVye1xuICAgIGJhY2tncm91bmQtaW1hZ2U6IG5vbmUgIWltcG9ydGFudDtcbn1cbiIsIi5oZWFkZXItbWQ6YWZ0ZXIge1xuICBiYWNrZ3JvdW5kLWltYWdlOiBub25lICFpbXBvcnRhbnQ7XG59Il19 */"
+module.exports = ".header-md:after {\n  background-image: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxkZWFucVxcRGVza3RvcFxcS3VnaWhhbiBSaWRlci9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQ0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlci1tZDphZnRlcntcclxuICAgIGJhY2tncm91bmQtaW1hZ2U6IG5vbmUgIWltcG9ydGFudDtcclxufVxyXG4iLCIuaGVhZGVyLW1kOmFmdGVyIHtcbiAgYmFja2dyb3VuZC1pbWFnZTogbm9uZSAhaW1wb3J0YW50O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -914,7 +914,7 @@ var RatingPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".pricing {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  padding: 8px;\n}\n\ntable {\n  width: 70%;\n}\n\ntr {\n  border: 1px solid #eee;\n}\n\ntd {\n  padding: 4px;\n}\n\n.header-md:after {\n  background-image: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9rdWdpaGFuZXhwcmVzcy9EZXNrdG9wL2t1Z2loYW4tcmlkZXIvc3JjL2FwcC9yYXRpbmcvcmF0aW5nLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcmF0aW5nL3JhdGluZy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0Esd0JBQUE7VUFBQSx1QkFBQTtFQUNBLFlBQUE7QUNDSjs7QURFQTtFQUNJLFVBQUE7QUNDSjs7QURFQTtFQUNJLHNCQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0FDQ0o7O0FERUE7RUFBbUIsaUNBQUE7QUNFbkIiLCJmaWxlIjoic3JjL2FwcC9yYXRpbmcvcmF0aW5nLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wcmljaW5ne1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBwYWRkaW5nOiA4cHg7XG59XG5cbnRhYmxle1xuICAgIHdpZHRoOiA3MCU7XG59XG5cbnRye1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNlZWU7XG59XG5cbnRke1xuICAgIHBhZGRpbmc6IDRweDtcbn1cblxuLmhlYWRlci1tZDphZnRlciB7IGJhY2tncm91bmQtaW1hZ2U6IG5vbmUgIWltcG9ydGFudCB9IiwiLnByaWNpbmcge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgcGFkZGluZzogOHB4O1xufVxuXG50YWJsZSB7XG4gIHdpZHRoOiA3MCU7XG59XG5cbnRyIHtcbiAgYm9yZGVyOiAxcHggc29saWQgI2VlZTtcbn1cblxudGQge1xuICBwYWRkaW5nOiA0cHg7XG59XG5cbi5oZWFkZXItbWQ6YWZ0ZXIge1xuICBiYWNrZ3JvdW5kLWltYWdlOiBub25lICFpbXBvcnRhbnQ7XG59Il19 */"
+module.exports = ".pricing {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  padding: 8px;\n}\n\ntable {\n  width: 70%;\n}\n\ntr {\n  border: 1px solid #eee;\n}\n\ntd {\n  padding: 4px;\n}\n\n.header-md:after {\n  background-image: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmF0aW5nL0M6XFxVc2Vyc1xcZGVhbnFcXERlc2t0b3BcXEt1Z2loYW4gUmlkZXIvc3JjXFxhcHBcXHJhdGluZ1xccmF0aW5nLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcmF0aW5nL3JhdGluZy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0Esd0JBQUE7VUFBQSx1QkFBQTtFQUNBLFlBQUE7QUNDSjs7QURFQTtFQUNJLFVBQUE7QUNDSjs7QURFQTtFQUNJLHNCQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0FDQ0o7O0FERUE7RUFBbUIsaUNBQUE7QUNFbkIiLCJmaWxlIjoic3JjL2FwcC9yYXRpbmcvcmF0aW5nLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wcmljaW5ne1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIHBhZGRpbmc6IDhweDtcclxufVxyXG5cclxudGFibGV7XHJcbiAgICB3aWR0aDogNzAlO1xyXG59XHJcblxyXG50cntcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkICNlZWU7XHJcbn1cclxuXHJcbnRke1xyXG4gICAgcGFkZGluZzogNHB4O1xyXG59XHJcblxyXG4uaGVhZGVyLW1kOmFmdGVyIHsgYmFja2dyb3VuZC1pbWFnZTogbm9uZSAhaW1wb3J0YW50IH0iLCIucHJpY2luZyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBwYWRkaW5nOiA4cHg7XG59XG5cbnRhYmxlIHtcbiAgd2lkdGg6IDcwJTtcbn1cblxudHIge1xuICBib3JkZXI6IDFweCBzb2xpZCAjZWVlO1xufVxuXG50ZCB7XG4gIHBhZGRpbmc6IDRweDtcbn1cblxuLmhlYWRlci1tZDphZnRlciB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IG5vbmUgIWltcG9ydGFudDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -1352,8 +1352,24 @@ var TripService = /** @class */ (function () {
     TripService.prototype.getDestination = function () {
         return this.destination;
     };
+    TripService.prototype.getFinalDestination = function () {
+        var destination;
+        if (this.dropOff.length > 0) {
+            destination = this.dropOff.pop();
+        }
+        return destination;
+    };
     TripService.prototype.getDropoff = function () {
         return this.dropOff;
+    };
+    TripService.prototype.getFinalDropOff = function () {
+        var originalDropOff = [];
+        var self = this;
+        this.dropOff.forEach(function (item, index) {
+            originalDropOff.push({ location: item.location });
+        });
+        var dropOff = [{ location: this.destination.location }].concat(originalDropOff);
+        return dropOff;
     };
     TripService.prototype.setDistance = function (distance) {
         return this.distance = distance;
@@ -1536,7 +1552,7 @@ var environment = {
         { name: 'عربى', code: 'ar' },
         { name: '中文', code: 'cn' }
     ], mapOptions: {
-        zoom: 12,
+        zoom: 16,
         mapTypeControl: false,
         zoomControl: false,
         fullscreenControl: false,
@@ -1608,7 +1624,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/kugihanexpress/Desktop/kugihan-rider/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\deanq\Desktop\Kugihan Rider\src\main.ts */"./src/main.ts");
 
 
 /***/ })
