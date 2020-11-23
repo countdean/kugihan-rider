@@ -99,8 +99,29 @@ export class TripService {
     return this.destination
   }
 
+  getFinalDestination() {
+    let destination;
+    if (this.dropOff.length > 0) {
+      destination = this.dropOff.pop()
+    } else {
+      destination = this.destination
+    }
+    return destination;
+  }
+
   getDropoff() {
     return this.dropOff
+  }
+
+  getFinalDropOff() {
+    let originalDropOff = [];
+    let self = this;
+    this.dropOff.forEach(function(item, index) {
+      originalDropOff.push({location: item.location});
+    });
+    let dropOff = [{location: this.destination.location}].concat(originalDropOff);
+
+    return dropOff
   }
 
   setDistance(distance) {

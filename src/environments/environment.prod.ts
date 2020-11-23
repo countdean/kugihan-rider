@@ -32,7 +32,7 @@ export const environment = {
     { name: 'عربى', code: 'ar' },
     { name: '中文', code: 'cn' }
   ], mapOptions: {
-    zoom: 17,
+    zoom: 16,
     mapTypeControl: false,
     zoomControl: false,
     fullscreenControl: false,

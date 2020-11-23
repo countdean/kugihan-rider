@@ -323,6 +323,7 @@ export class HomePage implements OnInit {
 
       // add destination to map
       if (this.destination) {
+        console.log('DESTINATION' + JSON.stringify(this.destination))
         this.destLatLng = new google.maps.LatLng(this.destination.location.lat, this.destination.location.lng);
         var bounds = new google.maps.LatLngBounds();
         bounds.extend(this.startLatLng);
@@ -331,17 +332,23 @@ export class HomePage implements OnInit {
         mapx.fitBounds(bounds);
         
         if (this.dropOff.length > 0) {
-
           let finalWaypoints = [];
-          this.dropOff.forEach(function(item) {
-            finalWaypoints.push({location: item.location});
+          console.log(`THE DROP OFF ${JSON.stringify(this.dropOff)}`)
+          let self = this;
+          this.dropOff.forEach(function(item, index) {
+              finalWaypoints.push({location: item.location});
           });
-          console.log(`THE DROP OFF ${JSON.stringify(finalWaypoints)}`)
+          let wpoints = [{location: this.destination.location}].concat(finalWaypoints);
+          let popwpoints = wpoints.pop()
+          let finalDest = new google.maps.LatLng(popwpoints.location.lat, popwpoints.location.lng);
+          var bounds = new google.maps.LatLngBounds();
+          // console.log(`wpoints ${JSON.stringify(wpoints)}`)
+          // console.log(`finalDest ${JSON.stringify(finalDest)}`)
 
           var request: any = {
             origin: this.startLatLng,
-            destination: this.destLatLng,
-            waypoints: finalWaypoints,
+            destination: finalDest,
+            waypoints: wpoints,
             travelMode: google.maps.TravelMode.DRIVING
           };
         } else {
@@ -498,8 +505,8 @@ export class HomePage implements OnInit {
           this.dealService.makeDeal(
             driver.key,
             this.tripService.getOrigin(),
-            this.tripService.getDestination(),
-            this.tripService.getDropoff(),
+            this.tripService.getFinalDestination(),
+            this.tripService.getFinalDropOff(),
             this.tripService.getDistance(),
             this.tripService.getFee(),
             this.tripService.getCurrency(),
