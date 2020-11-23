@@ -31,6 +31,14 @@
         </ion-text>
       </ion-label>
     </ion-item>
+    <ion-item text-wrap *ngFor="let dropOff of trip.dropOff; let i = index">
+      <ion-icon style="margin-right:18px" name="pin" color="primary" slot="start"></ion-icon>
+      <ion-label>
+        <ion-text>
+          <h3>{{trip.dropOff[i].vicinity}}</h3>
+        </ion-text>
+      </ion-label>
+    </ion-item>
     <ion-item text-wrap>
       <ion-icon style="margin-right:18px" name="pin" color="danger" slot="start"></ion-icon>
       <ion-label>

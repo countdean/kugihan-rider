@@ -16,6 +16,7 @@
         <h3>{{ trip.createdAt | date:'MMM dd, yyyy hh:mm a'}}</h3>
         <p>{{ trip.createdAt }}</p>
         <p>{{ trip.origin.vicinity }}</p>
+        <p *ngFor="let dropOff of trip.dropOff; let i = index">{{ trip.dropOff[i].vicinity }}</p>
         <p>{{ trip.destination.vicinity }}</p>
       </ion-label>
       <ion-text slot="end" style="margin: 0;">
