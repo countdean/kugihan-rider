@@ -15,6 +15,9 @@ import { take } from 'rxjs/operators';
 import { CommonService } from '../services/common.service';
 import * as firebase from 'firebase';
 
+import { ModalController } from '@ionic/angular';
+
+
 declare var google: any;
 declare var Stripe: any;
 
@@ -77,10 +80,14 @@ export class HomePage implements OnInit {
     private translate: TranslateService,
     private dealService: DealService,
     private common: CommonService,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    public modalController: ModalController,
   ) {
 
-  }
+  }  
+
+  
+  
   ionViewDidEnter() {
     this.menuCtrl.enable(true);
     this.afAuth.authState.subscribe(authData => {
@@ -96,6 +103,8 @@ export class HomePage implements OnInit {
     //console.log('THE DROP' + JSON.stringify(this.dropOff));
     this.loadMap();
   }
+
+  
 
   ngOnInit() {
     //console.log("calling");

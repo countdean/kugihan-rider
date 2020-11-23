@@ -11,8 +11,7 @@
 <ion-content >
   <div class="locationinput-holder" [hidden]="!showDetails">
     <!-- show button -->
-    <ion-button class="button button-assertive button-clear" style="height: 15px;" expand="full" (click)="showDetails=false"><ion-icon class="button-icon" name="arrow-dropdown" ></ion-icon></ion-button>
-    <!--<ion-fab-button size="small" (click)="showDetails=false"><ion-icon name="arrow-dropdown"></ion-icon></ion-fab-button>-->
+    <ion-button class="button button-assertive button-clear" style="height: 10px;" expand="full" (click)="showDetails=false"><ion-icon class="button-icon" name="arrow-dropdown" ></ion-icon></ion-button>
   </div>
   <div class="locationinput-holder" [hidden]="showDetails">
     <input class="locationinput" (click)="chooseOrigin()" placeholder="Where do you want to pickup?" type="text"
@@ -34,8 +33,8 @@
       </ion-row>
   
       <ion-row justify-content-end style="background: transparent" [hidden]="dropOff.length > 2">  
-        <ion-button size="small" (click)="chooseDropOff(dropOff.length)"> 
-          Add Stop
+        <ion-button size="small" (click)="chooseDropOff(dropOff.length)"><ion-icon name="add"></ion-icon> 
+          Add Drop-Off
         </ion-button>
       </ion-row>
 
@@ -45,9 +44,7 @@
     </p>
 
     <!-- hide button -->
-    <!--<ion-fab-button class="button-icon" size="small"><ion-icon name="arrow-dropdown" (click)="showDetails=true"></ion-icon></ion-fab-button>-->
-    <ion-button class="bbutton button-assertive button-clear" style="height: 18px;" expand="full" (click)="showDetails=true"><ion-icon class="button-icon"name="arrow-dropdown"></ion-icon></ion-button>
-    <!--<ion-fab-button class="button-icon" expand="full"><ion-fab-button class="button-icon" size="small"><ion-icon name="arrow-dropdown" (click)="showDetails=true"></ion-icon></ion-fab-button>-->
+    <ion-button class="bbutton button-assertive button-clear" style="height: 18px;" expand="full" (click)="showDetails=true"><ion-icon class="button-icon"name="arrow-dropup"></ion-icon></ion-button>
   </div>
 
   <div id="{{ mapId }}" [ngStyle]="{height: '100%'}"></div>
@@ -73,7 +70,7 @@
 
       <ion-col *ngFor="let vehicle of vehicles; let i = index" [ngClass]="{'active': vehicle.active}"
         (click)="chooseVehicle(i)" size="6">
-        <p class="carName">{{ vehicle.name }}</p>
+        <p class="carName" (click)="showDetails=true">{{ vehicle.name }} <ion-icon name="information-circle"></ion-icon></p>
         <img src="{{ vehicle.icon }}">
         <!-- <p class="carSeats">{{ vehicle.seats }} seats</p> -->
         <p class="carPrice">{{currency }}{{ vehicle.fee_taxed }}</p>
@@ -82,10 +79,10 @@
     </ion-row>
 
 
-    <ion-button expand="block" color="dark" [hidden]="destination" (click)="chooseDestination()">
+    <ion-button expand="block" color="yellow" [hidden]="destination" (click)="chooseDestination()">
       {{'RIDE_NOW' | translate}}</ion-button>
-    <ion-button expand="block" color="dark" [hidden]="!destination" (click)="book()">
-      {{ locateDriver == false ? 'RIDE NOW':'Locating Drivers'}} <ion-spinner name="dots" color="light"
+    <ion-button expand="block" color="yellow" [hidden]="!destination" (click)="book()">
+      {{ locateDriver == false ? 'DELIVER NOW':'Locating Drivers'}} <ion-spinner name="dots" color="light"
         [hidden]="!locateDriver"></ion-spinner>
     </ion-button>
   </ion-toolbar>
