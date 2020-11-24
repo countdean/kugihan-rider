@@ -70,7 +70,7 @@
 
       <ion-col *ngFor="let vehicle of vehicles; let i = index" [ngClass]="{'active': vehicle.active}"
         (click)="chooseVehicle(i)" size="6">
-        <p class="carName" (click)="showDetails=true">{{ vehicle.name }} <ion-icon name="information-circle"></ion-icon></p>
+        <p class="carName" (click)="showPopupIcon()">{{ vehicle.name }} <ion-icon name="information-circle"></ion-icon></p>
         <img src="{{ vehicle.icon }}">
         <!-- <p class="carSeats">{{ vehicle.seats }} seats</p> -->
         <p class="carPrice">{{currency }}{{ vehicle.fee_taxed }}</p>
