@@ -65,6 +65,7 @@ export class HomePage implements OnInit {
   durationText: any = '';
 
   showDetails: boolean = false;
+  noteToDriver: string = '';
 
   constructor(
     private router: Router,
@@ -308,6 +309,10 @@ export class HomePage implements OnInit {
                     else {
                       this.vehicles[i].commission = parseFloat(parseFloat(this.vehicles[i].commission_value).toFixed(2));
                     }
+
+                    this.vehicles[i].fee = Math.round(this.vehicles[i].fee);
+                    this.vehicles[i].commission = Math.round(this.vehicles[i].commission);
+                    this.vehicles[i].fee_taxed = Math.round(this.vehicles[i].fee_taxed);
                   }
 
                   console.log('TOTAL DISTANCE' + this.distanceText);
@@ -431,9 +436,10 @@ export class HomePage implements OnInit {
 
 
 //Modal for Vehicles Information
-  showPopupIcon() {
+  showPopupIcon(vehicle) {
+    //console.log(vehicle)
     this.alertCtrl.create({
-      header: 'Motorcycle Limit',
+      header: 'Vehicle Info',
       // inputs: [
       //   { placeholder: 'Motorcycle:' },
       //   { placeholder: '1.People' },
@@ -442,7 +448,7 @@ export class HomePage implements OnInit {
       //   { placeholder: '4.10 Kilos Weight Limit' }
       // ],
 
-      message: 'Weight Limit: 20kg',
+      message: `Weight Limit: ${vehicle.weight_limit}`,
 
       buttons: ['Close'
       ]
@@ -502,7 +508,7 @@ export class HomePage implements OnInit {
     // sort by driver distance and rating
     this.drivers = this.dealService.sortDriversList(this.drivers);
 
-    //Applying discount
+    //Applying discountsetRawFee
     console.log(this.tripService.getDiscount());
     if (this.tripService.getDiscount() != 0) {
       console.log(this.tripService.getFee());
@@ -556,6 +562,7 @@ export class HomePage implements OnInit {
             this.tripService.getCommissionType(),
             this.tripService.getCommissionValue(),
             this.tripService.getCommission(),
+            this.noteToDriver
           ).then(() => {
             let sub = this.dealService.getDriverDeal(driver.key).valueChanges().subscribe((snap: any) => {
               // if record doesn't exist or is accepted

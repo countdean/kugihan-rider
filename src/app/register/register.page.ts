@@ -15,7 +15,8 @@ export class RegisterPage implements OnInit {
   email: string = "";
   password: string = "";
   name: string = "";
-  phoneNumber: string = ""
+  phoneNumber: string = "";
+  confirm_password: string = "";
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -29,7 +30,16 @@ export class RegisterPage implements OnInit {
   }
   signup() {
     if (this.email.length == 0 || this.password.length == 0 || this.name.length == 0 || this.phoneNumber.length == 0) {
-      this.commonService.showToast("Invalid Credentials");
+      this.commonService.showToast("All fields are required");
+    } else if(!this.validateEmail(this.email)) {
+      this.commonService.showToast("Email format is not valid");
+    } else if(this.password.length < 6) {
+      this.commonService.showToast("Password is too short");
+    }
+    else if(this.password != this.confirm_password) {
+      this.commonService.showToast("Password does not match");
+    } else if(/\D/.test(this.phoneNumber) || this.phoneNumber.length != 11) {
+      this.commonService.showToast("Phone number if not valid");
     }
     else {
       this.commonService.showLoader();
@@ -45,4 +55,9 @@ export class RegisterPage implements OnInit {
     }
 
   }
+  validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
+
 }
