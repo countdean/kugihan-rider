@@ -433,17 +433,18 @@ export class HomePage implements OnInit {
 //Modal for Vehicles Information
   showPopupIcon() {
     this.alertCtrl.create({
-      header: 'Things we cant deliver',
-      inputs: [
-        { placeholder: 'Motorcycle:' },
-        { placeholder: '1.People' },
-        { placeholder: '2.Fish Seedlings' },
-        { placeholder: '3.Pets/Animals' },
-        { placeholder: '4.10 Kilos Weight Limit' }
-      ],
-      
-      buttons: [
-        { text: 'Cancel' },
+      header: 'Motorcycle Limit',
+      // inputs: [
+      //   { placeholder: 'Motorcycle:' },
+      //   { placeholder: '1.People' },
+      //   { placeholder: '2.Fish Seedlings' },
+      //   { placeholder: '3.Pets/Animals' },
+      //   { placeholder: '4.10 Kilos Weight Limit' }
+      // ],
+
+      message: 'Weight Limit: 20kg',
+
+      buttons: ['Close'
       ]
     }).then(prompt => prompt.present());
 
